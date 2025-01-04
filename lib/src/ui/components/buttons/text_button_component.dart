@@ -1,17 +1,14 @@
+import 'package:fcode_design_system/fcode_design_system.dart';
 import 'package:fcode_design_system/src/ui/components/shared/disabled_component.dart';
 import 'package:flutter/material.dart';
 
-class TextButtonComponent extends StatelessWidget {
+class TextButtonComponent extends ButtonComponent {
   const TextButtonComponent({
     super.key,
-    this.onPressed,
-    required this.text,
-    this.icon,
+    super.onPressed,
+    required super.text,
+    super.icon,
   });
-
-  final VoidCallback? onPressed;
-  final String text;
-  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +16,7 @@ class TextButtonComponent extends StatelessWidget {
       return _disabled(
         TextButton.icon(
           onPressed: onPressed,
-          label: Text(text),
+          label: Text(text!),
           icon: Icon(icon),
         ),
       );
@@ -27,7 +24,7 @@ class TextButtonComponent extends StatelessWidget {
     return _disabled(
       TextButton(
         onPressed: onPressed,
-        child: Text(text),
+        child: Text(text!),
       ),
     );
   }

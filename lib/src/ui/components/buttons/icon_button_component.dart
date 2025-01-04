@@ -1,15 +1,13 @@
+import 'package:fcode_design_system/src/ui/components/buttons/button_component.dart';
 import 'package:fcode_design_system/src/ui/components/shared/disabled_component.dart';
 import 'package:flutter/material.dart';
 
-class IconButtonComponent extends StatelessWidget {
+class IconButtonComponent extends ButtonComponent {
   const IconButtonComponent({
     super.key,
-    this.onPressed,
-    required this.icon,
+    super.onPressed,
+    required super.icon,
   });
-
-  final VoidCallback? onPressed;
-  final IconData icon;
 
   @override
   Widget build(BuildContext context) {

@@ -30,7 +30,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'buttons',
             children: [
               _i1.WidgetbookComponent(
-                name: 'IconButtonComponent',
+                name: 'ButtonComponent',
                 useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Icon',
@@ -40,11 +40,6 @@ final directories = <_i1.WidgetbookNode>[
                     name: 'Icon Disabled',
                     builder: _i2.buildDisabledIconButtonUseCase,
                   ),
-                ],
-              ),
-              _i1.WidgetbookComponent(
-                name: 'OutlinedButtonComponent',
-                useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Outlined',
                     builder: _i3.buildOutlinedButtonUseCase,
@@ -61,11 +56,6 @@ final directories = <_i1.WidgetbookNode>[
                     name: 'Outlined with Icon',
                     builder: _i3.buildIconOutlinedButtonUseCase,
                   ),
-                ],
-              ),
-              _i1.WidgetbookComponent(
-                name: 'PrimaryButtonComponent',
-                useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Primary',
                     builder: _i4.buildPrimaryButtonUseCase,
@@ -82,11 +72,6 @@ final directories = <_i1.WidgetbookNode>[
                     name: 'Primary with Icon',
                     builder: _i4.buildIconPrimaryButtonUseCase,
                   ),
-                ],
-              ),
-              _i1.WidgetbookComponent(
-                name: 'TextButtonComponent',
-                useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Text',
                     builder: _i5.buildTextButtonUseCase,
@@ -104,7 +89,7 @@ final directories = <_i1.WidgetbookNode>[
                     builder: _i5.buildIconTextButtonUseCase,
                   ),
                 ],
-              ),
+              )
             ],
           )
         ],

@@ -10,8 +10,10 @@ class FCodeTheme {
 
   FCodeTheme._internal();
 
-  final _colorSchemeLight = const ColorScheme.light();
-  final _colorSchemeDark = const ColorScheme.dark();
+  final _colorSchemeLight = ColorScheme.fromSeed(
+      seedColor: Colors.blue, brightness: Brightness.light);
+  final _colorSchemeDark =
+      ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark);
 
   final _textThemeLight = ThemeData.light().textTheme;
   final _textThemeDark = ThemeData.dark().textTheme;
