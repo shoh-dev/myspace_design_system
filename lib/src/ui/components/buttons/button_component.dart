@@ -59,14 +59,11 @@ class ButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DisabledComponent(
-      isDisabled: onPressed == null,
-      child: PrimaryButtonComponent(
-        key: key,
-        onPressed: onPressed,
-        text: text,
-        icon: icon,
-      ),
+    return PrimaryButtonComponent(
+      key: key,
+      onPressed: onPressed,
+      text: text,
+      icon: icon,
     );
   }
 }

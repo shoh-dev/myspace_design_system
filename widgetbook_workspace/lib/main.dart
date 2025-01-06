@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:fcode_design_system/fcode_design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -25,7 +23,7 @@ class _DeviceFramePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.redAccent
+      ..color = Colors.blueAccent
       ..strokeWidth = 6
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;

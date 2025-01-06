@@ -8,7 +8,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 void _onPressed() => log("Outlined Button Pressed");
 final _icon = Icons.send_rounded;
 
-@widgetbook.UseCase(name: 'Outlined', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Outlined Button', type: ButtonComponent)
 Widget buildOutlinedButtonUseCase(BuildContext context) {
   return ButtonComponent.outlined(
     text: "Outlined Button",
@@ -16,7 +16,7 @@ Widget buildOutlinedButtonUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Outlined with Icon', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Outlined Button with Icon', type: ButtonComponent)
 Widget buildIconOutlinedButtonUseCase(BuildContext context) {
   return ButtonComponent.outlined(
     text: "Outlined Button with Icon",
@@ -25,7 +25,7 @@ Widget buildIconOutlinedButtonUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Outlined Disabled', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Outlined Button Disabled', type: ButtonComponent)
 Widget buildDisabledOutlinedButtonUseCase(BuildContext context) {
   return ButtonComponent.outlined(
     text: "Outlined Button Disabled",
@@ -33,7 +33,8 @@ Widget buildDisabledOutlinedButtonUseCase(BuildContext context) {
 }
 
 //Outlined Disabled with Icon
-@widgetbook.UseCase(name: 'Outlined Disabled with Icon', type: ButtonComponent)
+@widgetbook.UseCase(
+    name: 'Outlined Button Disabled with Icon', type: ButtonComponent)
 Widget buildDisabledIconOutlinedButtonUseCase(BuildContext context) {
   return ButtonComponent.outlined(
     text: "Outlined Button Disabled with Icon",

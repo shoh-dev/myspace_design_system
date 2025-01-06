@@ -8,7 +8,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 void _onPressed() => log("Primary Button Pressed");
 final _icon = Icons.send_rounded;
 
-@widgetbook.UseCase(name: 'Primary', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Primary Button', type: ButtonComponent)
 Widget buildPrimaryButtonUseCase(BuildContext context) {
   return ButtonComponent(
     text: "Primary Button",
@@ -16,7 +16,7 @@ Widget buildPrimaryButtonUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Primary with Icon', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Primary Button with Icon', type: ButtonComponent)
 Widget buildIconPrimaryButtonUseCase(BuildContext context) {
   return ButtonComponent(
     text: "Primary Button with Icon",
@@ -25,7 +25,7 @@ Widget buildIconPrimaryButtonUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Primary Disabled', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Primary Button Disabled', type: ButtonComponent)
 Widget buildDisabledPrimaryButtonUseCase(BuildContext context) {
   return ButtonComponent(
     text: "Primary Button Disabled",
@@ -33,7 +33,8 @@ Widget buildDisabledPrimaryButtonUseCase(BuildContext context) {
 }
 
 //Primary Disabled with Icon
-@widgetbook.UseCase(name: 'Primary Disabled with Icon', type: ButtonComponent)
+@widgetbook.UseCase(
+    name: 'Primary Button Disabled with Icon', type: ButtonComponent)
 Widget buildDisabledIconPrimaryButtonUseCase(BuildContext context) {
   return ButtonComponent(
     text: "Primary Button Disabled with Icon",

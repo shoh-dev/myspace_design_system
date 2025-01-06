@@ -33,59 +33,59 @@ final directories = <_i1.WidgetbookNode>[
                 name: 'ButtonComponent',
                 useCases: [
                   _i1.WidgetbookUseCase(
-                    name: 'Icon',
+                    name: 'Icon Button',
                     builder: _i2.buildIconButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Icon Disabled',
+                    name: 'Icon Button Disabled',
                     builder: _i2.buildDisabledIconButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Outlined',
+                    name: 'Outlined Button',
                     builder: _i3.buildOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Outlined Disabled',
+                    name: 'Outlined Button Disabled',
                     builder: _i3.buildDisabledOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Outlined Disabled with Icon',
+                    name: 'Outlined Button Disabled with Icon',
                     builder: _i3.buildDisabledIconOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Outlined with Icon',
+                    name: 'Outlined Button with Icon',
                     builder: _i3.buildIconOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Primary',
+                    name: 'Primary Button',
                     builder: _i4.buildPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Primary Disabled',
+                    name: 'Primary Button Disabled',
                     builder: _i4.buildDisabledPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Primary Disabled with Icon',
+                    name: 'Primary Button Disabled with Icon',
                     builder: _i4.buildDisabledIconPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Primary with Icon',
+                    name: 'Primary Button with Icon',
                     builder: _i4.buildIconPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Text',
+                    name: 'Text Button',
                     builder: _i5.buildTextButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Text Disabled',
+                    name: 'Text Button Disabled',
                     builder: _i5.buildDisabledTextButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Text Disabled with Icon',
+                    name: 'Text Button Disabled with Icon',
                     builder: _i5.buildDisabledIconTextButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
-                    name: 'Text with Icon',
+                    name: 'Text Button with Icon',
                     builder: _i5.buildIconTextButtonUseCase,
                   ),
                 ],

@@ -8,7 +8,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 void _onPressed() => log("Text Button Pressed");
 final _icon = Icons.send_rounded;
 
-@widgetbook.UseCase(name: 'Text', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Text Button', type: ButtonComponent)
 Widget buildTextButtonUseCase(BuildContext context) {
   return ButtonComponent.text(
     text: "Text Button",
@@ -16,7 +16,7 @@ Widget buildTextButtonUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Text with Icon', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Text Button with Icon', type: ButtonComponent)
 Widget buildIconTextButtonUseCase(BuildContext context) {
   return ButtonComponent.text(
     text: "Text Button with Icon",
@@ -25,7 +25,7 @@ Widget buildIconTextButtonUseCase(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Text Disabled', type: ButtonComponent)
+@widgetbook.UseCase(name: 'Text Button Disabled', type: ButtonComponent)
 Widget buildDisabledTextButtonUseCase(BuildContext context) {
   return ButtonComponent.text(
     text: "Text Button Disabled",
@@ -33,7 +33,8 @@ Widget buildDisabledTextButtonUseCase(BuildContext context) {
 }
 
 //Text Disabled with Icon
-@widgetbook.UseCase(name: 'Text Disabled with Icon', type: ButtonComponent)
+@widgetbook.UseCase(
+    name: 'Text Button Disabled with Icon', type: ButtonComponent)
 Widget buildDisabledIconTextButtonUseCase(BuildContext context) {
   return ButtonComponent.text(
     text: "Text Button Disabled with Icon",
