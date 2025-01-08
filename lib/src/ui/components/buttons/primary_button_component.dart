@@ -15,6 +15,7 @@ class PrimaryButtonComponent extends ButtonComponent {
     if (icon != null) {
       return _disabled(
         FilledButton.icon(
+          key: key,
           onPressed: onPressed,
           label: Text(text!),
           icon: Icon(icon),

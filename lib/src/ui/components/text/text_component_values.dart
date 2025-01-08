@@ -11,8 +11,8 @@ extension TextComponentValueHelpers on TextComponentValue {
 abstract class TextComponentValue {
   const TextComponentValue();
 
-  factory TextComponentValue.hardCoded(String text) =>
-      HardCodedTextComponentValue(text);
+  factory TextComponentValue.hardCoded(String text, [bool ignoreLog = false]) =>
+      HardCodedTextComponentValue(text, ignoreLog);
 
   factory TextComponentValue.number(num number) =>
       NumberTextComponentValue(number);
@@ -27,15 +27,17 @@ abstract class TextComponentValue {
 class HardCodedTextComponentValue extends TextComponentValue {
   final String text;
 
-  HardCodedTextComponentValue(this.text) {
-    //file where HardCodedTextComponentValue is used
-    try {
-      final stackTrace = StackTrace.current;
-      final fileName = stackTrace.toString().split('\n')[1];
-      log("\n${fileName.replaceAll("    ", "")}",
-          name: 'HardCodedTextComponentValue');
-    } catch (e) {
-      return;
+  HardCodedTextComponentValue(this.text, [bool ignoreLog = false]) {
+    if (!ignoreLog) {
+      //file where HardCodedTextComponentValue is used
+      try {
+        final stackTrace = StackTrace.current;
+        final fileName = stackTrace.toString().split('\n')[1];
+        log("\n${fileName.replaceAll("    ", "")}",
+            name: 'HardCodedTextComponentValue');
+      } catch (e) {
+        return;
+      }
     }
   }
 }

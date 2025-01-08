@@ -18,8 +18,10 @@ import 'package:widgetbook_workspace/components/buttons/primary_button_usecase.d
     as _i4;
 import 'package:widgetbook_workspace/components/buttons/text_button_usecase.dart'
     as _i5;
-import 'package:widgetbook_workspace/components/text/text_component.dart'
+import 'package:widgetbook_workspace/components/layout/layout_component.dart'
     as _i6;
+import 'package:widgetbook_workspace/components/text/text_component.dart'
+    as _i7;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
@@ -95,6 +97,32 @@ final directories = <_i1.WidgetbookNode>[
             ],
           ),
           _i1.WidgetbookFolder(
+            name: 'layout',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'ColumnComponent',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Column',
+                  builder: _i6.buildColumn,
+                ),
+              ),
+              _i1.WidgetbookLeafComponent(
+                name: 'RowComponent',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Row',
+                  builder: _i6.buildRow,
+                ),
+              ),
+              _i1.WidgetbookLeafComponent(
+                name: 'StackComponent',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Stack',
+                  builder: _i6.buildStack,
+                ),
+              ),
+            ],
+          ),
+          _i1.WidgetbookFolder(
             name: 'text',
             children: [
               _i1.WidgetbookComponent(
@@ -102,19 +130,19 @@ final directories = <_i1.WidgetbookNode>[
                 useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Any Data Text',
-                    builder: _i6.buildAnyDataText,
+                    builder: _i7.buildAnyDataText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Currency Text',
-                    builder: _i6.buildCurrencyText,
+                    builder: _i7.buildCurrencyText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Hard Coded Text',
-                    builder: _i6.buildHardCodedText,
+                    builder: _i7.buildHardCodedText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Number Text',
-                    builder: _i6.buildNumberText,
+                    builder: _i7.buildNumberText,
                   ),
                 ],
               )

@@ -1,7 +1,8 @@
+import 'package:fcode_design_system/src/ui/components/component/component.dart';
 import 'package:fcode_design_system/utils/helpers/context.dart';
 import 'package:flutter/material.dart';
 
-class DisabledComponent extends StatelessWidget {
+class DisabledComponent extends Component {
   const DisabledComponent({
     super.key,
     this.isDisabled = true,

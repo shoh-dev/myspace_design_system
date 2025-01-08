@@ -1,10 +1,11 @@
+import 'package:fcode_design_system/src/ui/components/component/component.dart';
 import 'package:flutter/material.dart';
 
-import 'text_component_values.dart';
+import 'text_component.dart';
 
 export 'text_component_values.dart';
 
-class TextComponent extends StatelessWidget {
+class TextComponent extends Component {
   const TextComponent({
     super.key,
     required this.value,
@@ -37,6 +38,6 @@ class TextComponent extends StatelessWidget {
   }
 
   Widget _text(BuildContext context, String text) {
-    return Text(text, style: _buildTextStyle(context));
+    return Text(text, key: key, style: _buildTextStyle(context));
   }
 }

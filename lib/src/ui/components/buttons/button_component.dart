@@ -2,10 +2,16 @@ import 'package:fcode_design_system/src/ui/components/buttons/icon_button_compon
 import 'package:fcode_design_system/src/ui/components/buttons/outlined_button_component.dart';
 import 'package:fcode_design_system/src/ui/components/buttons/primary_button_component.dart';
 import 'package:fcode_design_system/src/ui/components/buttons/text_button_component.dart';
-import 'package:fcode_design_system/src/ui/components/shared/disabled_component.dart';
+import 'package:fcode_design_system/src/ui/components/component/component.dart';
+import 'package:fcode_design_system/src/ui/components/key/key.dart';
 import 'package:flutter/material.dart';
 
-class ButtonComponent extends StatelessWidget {
+export 'icon_button_component.dart';
+export 'outlined_button_component.dart';
+export 'primary_button_component.dart';
+export 'text_button_component.dart';
+
+class ButtonComponent extends Component {
   const ButtonComponent({
     super.key,
     this.onPressed,
@@ -18,7 +24,7 @@ class ButtonComponent extends StatelessWidget {
   final IconData? icon;
 
   factory ButtonComponent.outlined({
-    Key? key,
+    ComponentKey? key,
     VoidCallback? onPressed,
     required String text,
     IconData? icon,
@@ -32,7 +38,7 @@ class ButtonComponent extends StatelessWidget {
   }
 
   factory ButtonComponent.text({
-    Key? key,
+    ComponentKey? key,
     VoidCallback? onPressed,
     required String text,
     IconData? icon,
@@ -46,7 +52,7 @@ class ButtonComponent extends StatelessWidget {
   }
 
   factory ButtonComponent.icon({
-    Key? key,
+    ComponentKey? key,
     VoidCallback? onPressed,
     required IconData icon,
   }) {
@@ -60,7 +66,7 @@ class ButtonComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryButtonComponent(
-      key: key,
+      key: key is ComponentKey ? key as ComponentKey : null,
       onPressed: onPressed,
       text: text,
       icon: icon,
