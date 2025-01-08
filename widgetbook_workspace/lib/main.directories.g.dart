@@ -10,14 +10,16 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:widgetbook/widgetbook.dart' as _i1;
-import 'package:widgetbook_workspace/components/buttons/icon_button.dart'
+import 'package:widgetbook_workspace/components/buttons/icon_button_usecase.dart'
     as _i2;
-import 'package:widgetbook_workspace/components/buttons/outlined_button.dart'
+import 'package:widgetbook_workspace/components/buttons/outlined_button_usecase.dart'
     as _i3;
-import 'package:widgetbook_workspace/components/buttons/primary_button.dart'
+import 'package:widgetbook_workspace/components/buttons/primary_button_usecase.dart'
     as _i4;
-import 'package:widgetbook_workspace/components/buttons/text_button.dart'
+import 'package:widgetbook_workspace/components/buttons/text_button_usecase.dart'
     as _i5;
+import 'package:widgetbook_workspace/components/text/text_component.dart'
+    as _i6;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
@@ -91,7 +93,33 @@ final directories = <_i1.WidgetbookNode>[
                 ],
               )
             ],
-          )
+          ),
+          _i1.WidgetbookFolder(
+            name: 'text',
+            children: [
+              _i1.WidgetbookComponent(
+                name: 'TextComponent',
+                useCases: [
+                  _i1.WidgetbookUseCase(
+                    name: 'Any Data Text',
+                    builder: _i6.buildAnyDataText,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'Currency Text',
+                    builder: _i6.buildCurrencyText,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'Hard Coded Text',
+                    builder: _i6.buildHardCodedText,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'Number Text',
+                    builder: _i6.buildNumberText,
+                  ),
+                ],
+              )
+            ],
+          ),
         ],
       )
     ],
