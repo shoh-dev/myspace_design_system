@@ -3,7 +3,7 @@ import 'package:fcode_design_system/src/ui/components/key/key.dart';
 import 'package:fcode_design_system/src/ui/components/shared/disabled_component.dart';
 import 'package:flutter/material.dart';
 
-Widget _disabled(Widget child, {VoidCallback? onPressed}) {
+Widget _disabled(Widget child, VoidCallback? onPressed) {
   return DisabledComponent(
     isDisabled: onPressed == null,
     child: child,
@@ -62,6 +62,7 @@ class _OutlinedButtonComponent extends ButtonComponent {
           label: Text(text!),
           icon: Icon(icon),
         ),
+        onPressed,
       );
     }
     return _disabled(
@@ -69,6 +70,7 @@ class _OutlinedButtonComponent extends ButtonComponent {
         onPressed: onPressed,
         child: Text(text!),
       ),
+      onPressed,
     );
   }
 }
@@ -90,6 +92,7 @@ class _PrimaryButtonComponent extends ButtonComponent {
           label: Text(text!),
           icon: Icon(icon),
         ),
+        onPressed,
       );
     }
     return _disabled(
@@ -97,6 +100,7 @@ class _PrimaryButtonComponent extends ButtonComponent {
         onPressed: onPressed,
         child: Text(text!),
       ),
+      onPressed,
     );
   }
 }
@@ -118,6 +122,7 @@ class _TextButtonComponent extends ButtonComponent {
           label: Text(text!),
           icon: Icon(icon),
         ),
+        onPressed,
       );
     }
     return _disabled(
@@ -125,6 +130,7 @@ class _TextButtonComponent extends ButtonComponent {
         onPressed: onPressed,
         child: Text(text!),
       ),
+      onPressed,
     );
   }
 }
@@ -143,6 +149,7 @@ class _IconButtonComponent extends ButtonComponent {
         onPressed: onPressed,
         icon: Icon(icon!),
       ),
+      onPressed,
     );
   }
 }

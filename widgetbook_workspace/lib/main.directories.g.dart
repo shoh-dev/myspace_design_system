@@ -10,18 +10,9 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:widgetbook/widgetbook.dart' as _i1;
-import 'package:widgetbook_workspace/components/buttons/icon_button_usecase.dart'
-    as _i2;
-import 'package:widgetbook_workspace/components/buttons/outlined_button_usecase.dart'
-    as _i3;
-import 'package:widgetbook_workspace/components/buttons/primary_button_usecase.dart'
-    as _i4;
-import 'package:widgetbook_workspace/components/buttons/text_button_usecase.dart'
-    as _i5;
-import 'package:widgetbook_workspace/components/layout/layout_component.dart'
-    as _i6;
-import 'package:widgetbook_workspace/components/text/text_component.dart'
-    as _i7;
+import 'package:widgetbook_workspace/components/button_usecase.dart' as _i2;
+import 'package:widgetbook_workspace/components/layout_usecase.dart' as _i3;
+import 'package:widgetbook_workspace/components/text_usecase.dart' as _i4;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
@@ -46,51 +37,51 @@ final directories = <_i1.WidgetbookNode>[
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Outlined Button',
-                    builder: _i3.buildOutlinedButtonUseCase,
+                    builder: _i2.buildOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Outlined Button Disabled',
-                    builder: _i3.buildDisabledOutlinedButtonUseCase,
+                    builder: _i2.buildDisabledOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Outlined Button Disabled with Icon',
-                    builder: _i3.buildDisabledIconOutlinedButtonUseCase,
+                    builder: _i2.buildDisabledIconOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Outlined Button with Icon',
-                    builder: _i3.buildIconOutlinedButtonUseCase,
+                    builder: _i2.buildIconOutlinedButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Primary Button',
-                    builder: _i4.buildPrimaryButtonUseCase,
+                    builder: _i2.buildPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Primary Button Disabled',
-                    builder: _i4.buildDisabledPrimaryButtonUseCase,
+                    builder: _i2.buildDisabledPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Primary Button Disabled with Icon',
-                    builder: _i4.buildDisabledIconPrimaryButtonUseCase,
+                    builder: _i2.buildDisabledIconPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Primary Button with Icon',
-                    builder: _i4.buildIconPrimaryButtonUseCase,
+                    builder: _i2.buildIconPrimaryButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Text Button',
-                    builder: _i5.buildTextButtonUseCase,
+                    builder: _i2.buildTextButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Text Button Disabled',
-                    builder: _i5.buildDisabledTextButtonUseCase,
+                    builder: _i2.buildDisabledTextButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Text Button Disabled with Icon',
-                    builder: _i5.buildDisabledIconTextButtonUseCase,
+                    builder: _i2.buildDisabledIconTextButtonUseCase,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Text Button with Icon',
-                    builder: _i5.buildIconTextButtonUseCase,
+                    builder: _i2.buildIconTextButtonUseCase,
                   ),
                 ],
               )
@@ -104,15 +95,15 @@ final directories = <_i1.WidgetbookNode>[
                 useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Column',
-                    builder: _i6.buildColumn,
+                    builder: _i3.buildColumn,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Row',
-                    builder: _i6.buildRow,
+                    builder: _i3.buildRow,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Stack',
-                    builder: _i6.buildStack,
+                    builder: _i3.buildStack,
                   ),
                 ],
               )
@@ -126,19 +117,19 @@ final directories = <_i1.WidgetbookNode>[
                 useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Any Data Text',
-                    builder: _i7.buildAnyDataText,
+                    builder: _i4.buildAnyDataText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Currency Text',
-                    builder: _i7.buildCurrencyText,
+                    builder: _i4.buildCurrencyText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Hard Coded Text',
-                    builder: _i7.buildHardCodedText,
+                    builder: _i4.buildHardCodedText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Number Text',
-                    builder: _i7.buildNumberText,
+                    builder: _i4.buildNumberText,
                   ),
                 ],
               )
