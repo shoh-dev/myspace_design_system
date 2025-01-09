@@ -1,6 +1,6 @@
-import 'package:fcode_design_system/src/ui/components/component/component.dart';
-import 'package:fcode_design_system/src/ui/components/key/key.dart';
-import 'package:fcode_design_system/src/ui/components/shared/disabled_component.dart';
+import 'package:myspace_design_system/src/ui/components/component/component.dart';
+import 'package:myspace_design_system/src/ui/components/key/key.dart';
+import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 import 'package:flutter/material.dart';
 
 Widget _disabled(Widget child, VoidCallback? onPressed) {

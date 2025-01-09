@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:fcode_design_system/fcode_design_system.dart';
+import 'package:myspace_design_system/myspace_design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 

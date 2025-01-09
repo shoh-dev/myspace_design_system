@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:fcode_design_system/src/ui/components/component/component.dart';
+import 'package:myspace_design_system/src/ui/components/component/component.dart';
 import 'package:flutter/material.dart';
 
 abstract class TextComponent extends Component {

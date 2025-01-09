@@ -1,6 +1,6 @@
 flutter create
---org com.shoh.dev.fcode.designsystem 
--t package fcode_design_system
+--org com.shoh.dev.myspace.designsystem 
+-t package myspace_design_system
 
 
 ### Info

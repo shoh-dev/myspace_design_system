@@ -1,4 +1,4 @@
-library fcode_design_system;
+library myspace_design_system;
 
 // ----> Components Start <----
 export 'src/ui/components/key/key.dart';

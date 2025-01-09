@@ -1,5 +1,5 @@
-import 'package:fcode_design_system/src/ui/components/component/component.dart';
-import 'package:fcode_design_system/utils/helpers/context.dart';
+import 'package:myspace_design_system/src/ui/components/component/component.dart';
+import 'package:myspace_design_system/utils/helpers/context.dart';
 import 'package:flutter/material.dart';
 
 class DisabledComponent extends Component {
