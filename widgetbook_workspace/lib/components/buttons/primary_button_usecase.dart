@@ -10,7 +10,7 @@ final _icon = Icons.send_rounded;
 
 @widgetbook.UseCase(name: 'Primary Button', type: ButtonComponent)
 Widget buildPrimaryButtonUseCase(BuildContext context) {
-  return ButtonComponent(
+  return const ButtonComponent(
     text: "Primary Button",
     onPressed: _onPressed,
   );
@@ -27,7 +27,7 @@ Widget buildIconPrimaryButtonUseCase(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Primary Button Disabled', type: ButtonComponent)
 Widget buildDisabledPrimaryButtonUseCase(BuildContext context) {
-  return ButtonComponent(
+  return const ButtonComponent(
     text: "Primary Button Disabled",
   );
 }

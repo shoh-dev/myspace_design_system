@@ -7,12 +7,10 @@ Widget buildRow(BuildContext context) {
   return LayoutComponent.row(
     spacing: 12,
     children: [
-      TextComponent(
-          value:
-              HardCodedTextComponentValue("Hard Coded Text", ignoreLog: true)),
-      const TextComponent(value: NumberTextComponentValue(12000)),
-      const TextComponent(value: CurrencyTextComponentValue(12000)),
-      const TextComponent(value: AnyDataTextComponentValue("London, UK")),
+      TextComponent.hardCoded("Hard Coded Text"),
+      const TextComponent.number(12000),
+      const TextComponent.currency(12000),
+      const TextComponent.any("London, UK"),
     ],
   );
 }
@@ -22,12 +20,10 @@ Widget buildColumn(BuildContext context) {
   return LayoutComponent.column(
     mainAxisSize: MainAxisSize.min,
     children: [
-      TextComponent(
-          value:
-              HardCodedTextComponentValue("Hard Coded Text", ignoreLog: true)),
-      const TextComponent(value: NumberTextComponentValue(12000)),
-      const TextComponent(value: CurrencyTextComponentValue(12000)),
-      const TextComponent(value: AnyDataTextComponentValue("London, UK")),
+      TextComponent.hardCoded("Hard Coded Text"),
+      const TextComponent.number(12000),
+      const TextComponent.currency(12000),
+      const TextComponent.any("London, UK"),
     ],
   );
 }
@@ -36,12 +32,10 @@ Widget buildColumn(BuildContext context) {
 Widget buildStack(BuildContext context) {
   return LayoutComponent.stack(
     children: [
-      TextComponent(
-          value:
-              HardCodedTextComponentValue("Hard Coded Text", ignoreLog: true)),
-      const TextComponent(value: NumberTextComponentValue(12000)),
-      const TextComponent(value: CurrencyTextComponentValue(12000)),
-      const TextComponent(value: AnyDataTextComponentValue("London, UK")),
+      TextComponent.hardCoded("Hard Coded Text"),
+      const TextComponent.number(12000),
+      const TextComponent.currency(12000),
+      const TextComponent.any("London, UK"),
     ],
   );
 }

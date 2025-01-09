@@ -30,7 +30,7 @@ class _DeviceFramePainter extends CustomPainter {
 
     canvas.drawRect(
       Rect.fromPoints(
-        Offset(0, 0),
+        const Offset(0, 0),
         Offset(size.width, size.height),
       ),
       paint,
