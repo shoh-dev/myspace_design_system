@@ -1,43 +1,37 @@
-import 'dart:developer';
-
-import 'text_component.dart';
-
-extension TextComponentValueHelpers on TextComponentValue {
-  TextComponent build() => TextComponent(value: this);
-}
-
 // ---> Types
+
+import 'dart:developer';
 
 abstract class TextComponentValue {
   const TextComponentValue();
 
-  factory TextComponentValue.hardCoded(String text, [bool ignoreLog = false]) =>
-      HardCodedTextComponentValue(text, ignoreLog);
+  // factory TextComponentValue.hardCoded(String text) =>
+  //     HardCodedTextComponentValue(text);
 
-  factory TextComponentValue.number(num number) =>
-      NumberTextComponentValue(number);
+  // factory TextComponentValue.number(num number) =>
+  //     NumberTextComponentValue(number);
 
-  factory TextComponentValue.currency(num number) =>
-      CurrencyTextComponentValue(number);
+  // factory TextComponentValue.currency(num number) =>
+  //     CurrencyTextComponentValue(number);
 
-  factory TextComponentValue.any(String text) =>
-      AnyDataTextComponentValue(text);
+  // factory TextComponentValue.any(String text) =>
+  //     AnyDataTextComponentValue(text);
 }
 
 class HardCodedTextComponentValue extends TextComponentValue {
   final String text;
+  final bool ignoreLog;
 
-  HardCodedTextComponentValue(this.text, [bool ignoreLog = false]) {
+  HardCodedTextComponentValue(this.text, {this.ignoreLog = false}) {
     if (!ignoreLog) {
       //file where HardCodedTextComponentValue is used
       try {
         final stackTrace = StackTrace.current;
         final fileName = stackTrace.toString().split('\n')[1];
-        log("\n${fileName.replaceAll("    ", "")}",
+        log("\n${fileName.replaceAll("     ", "")}",
             name: 'HardCodedTextComponentValue');
-      } catch (e) {
-        return;
-      }
+        // ignore: empty_catches
+      } catch (e) {}
     }
   }
 }
@@ -51,7 +45,7 @@ abstract class DataTextComponentValue extends TextComponentValue {
 class AnyDataTextComponentValue extends DataTextComponentValue {
   final String text;
 
-  AnyDataTextComponentValue(this.text);
+  const AnyDataTextComponentValue(this.text);
 
   @override
   String string() => text;
@@ -60,7 +54,7 @@ class AnyDataTextComponentValue extends DataTextComponentValue {
 class NumberTextComponentValue extends DataTextComponentValue {
   final num number;
 
-  NumberTextComponentValue(this.number);
+  const NumberTextComponentValue(this.number);
 
   @override
   String string() => number.toString();
@@ -69,7 +63,7 @@ class NumberTextComponentValue extends DataTextComponentValue {
 class CurrencyTextComponentValue extends DataTextComponentValue {
   final num number;
 
-  CurrencyTextComponentValue(this.number);
+  const CurrencyTextComponentValue(this.number);
 
   @override
   String string() => "\$$number";

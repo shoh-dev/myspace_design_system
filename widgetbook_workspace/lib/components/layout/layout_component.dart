@@ -7,10 +7,12 @@ Widget buildRow(BuildContext context) {
   return LayoutComponent.row(
     spacing: 12,
     children: [
-      TextComponentValue.hardCoded("Hard Coded Text", true).build(),
-      TextComponentValue.number(12000).build(),
-      TextComponentValue.currency(12000).build(),
-      TextComponentValue.any("London, UK").build(),
+      TextComponent(
+          value:
+              HardCodedTextComponentValue("Hard Coded Text", ignoreLog: true)),
+      const TextComponent(value: NumberTextComponentValue(12000)),
+      const TextComponent(value: CurrencyTextComponentValue(12000)),
+      const TextComponent(value: AnyDataTextComponentValue("London, UK")),
     ],
   );
 }
@@ -20,10 +22,12 @@ Widget buildColumn(BuildContext context) {
   return LayoutComponent.column(
     mainAxisSize: MainAxisSize.min,
     children: [
-      TextComponentValue.hardCoded("Hard Coded Text", true).build(),
-      TextComponentValue.number(12000).build(),
-      TextComponentValue.currency(12000).build(),
-      TextComponentValue.any("London, UK").build(),
+      TextComponent(
+          value:
+              HardCodedTextComponentValue("Hard Coded Text", ignoreLog: true)),
+      const TextComponent(value: NumberTextComponentValue(12000)),
+      const TextComponent(value: CurrencyTextComponentValue(12000)),
+      const TextComponent(value: AnyDataTextComponentValue("London, UK")),
     ],
   );
 }
@@ -32,10 +36,12 @@ Widget buildColumn(BuildContext context) {
 Widget buildStack(BuildContext context) {
   return LayoutComponent.stack(
     children: [
-      TextComponentValue.hardCoded("Hard Coded Text", true).build(),
-      TextComponentValue.number(12000).build(),
-      TextComponentValue.currency(12000).build(),
-      TextComponentValue.any("London, UK").build(),
+      TextComponent(
+          value:
+              HardCodedTextComponentValue("Hard Coded Text", ignoreLog: true)),
+      const TextComponent(value: NumberTextComponentValue(12000)),
+      const TextComponent(value: CurrencyTextComponentValue(12000)),
+      const TextComponent(value: AnyDataTextComponentValue("London, UK")),
     ],
   );
 }
