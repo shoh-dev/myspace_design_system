@@ -1,75 +1,148 @@
-import 'package:fcode_design_system/src/ui/components/buttons/icon_button_component.dart';
-import 'package:fcode_design_system/src/ui/components/buttons/outlined_button_component.dart';
-import 'package:fcode_design_system/src/ui/components/buttons/primary_button_component.dart';
-import 'package:fcode_design_system/src/ui/components/buttons/text_button_component.dart';
 import 'package:fcode_design_system/src/ui/components/component/component.dart';
 import 'package:fcode_design_system/src/ui/components/key/key.dart';
+import 'package:fcode_design_system/src/ui/components/shared/disabled_component.dart';
 import 'package:flutter/material.dart';
 
-export 'icon_button_component.dart';
-export 'outlined_button_component.dart';
-export 'primary_button_component.dart';
-export 'text_button_component.dart';
+Widget _disabled(Widget child, {VoidCallback? onPressed}) {
+  return DisabledComponent(
+    isDisabled: onPressed == null,
+    child: child,
+  );
+}
 
-class ButtonComponent extends Component {
-  const ButtonComponent({
-    super.key,
-    this.onPressed,
-    this.text,
-    this.icon,
-  });
+abstract class ButtonComponent extends Component {
+  const ButtonComponent({super.key, this.onPressed, this.text, this.icon});
 
   final VoidCallback? onPressed;
   final String? text;
   final IconData? icon;
 
-  factory ButtonComponent.outlined({
+  const factory ButtonComponent.outlined({
     ComponentKey? key,
     VoidCallback? onPressed,
     required String text,
     IconData? icon,
-  }) {
-    return OutlinedButtonComponent(
-      key: key,
-      onPressed: onPressed,
-      text: text,
-      icon: icon,
-    );
-  }
+  }) = _OutlinedButtonComponent;
 
-  factory ButtonComponent.text({
+  const factory ButtonComponent.primary({
     ComponentKey? key,
     VoidCallback? onPressed,
     required String text,
     IconData? icon,
-  }) {
-    return TextButtonComponent(
-      key: key,
-      onPressed: onPressed,
-      text: text,
-      icon: icon,
-    );
-  }
+  }) = _PrimaryButtonComponent;
 
-  factory ButtonComponent.icon({
+  const factory ButtonComponent.text({
+    ComponentKey? key,
+    VoidCallback? onPressed,
+    required String text,
+    IconData? icon,
+  }) = _TextButtonComponent;
+
+  const factory ButtonComponent.icon({
     ComponentKey? key,
     VoidCallback? onPressed,
     required IconData icon,
-  }) {
-    return IconButtonComponent(
-      key: key,
-      onPressed: onPressed,
-      icon: icon,
-    );
-  }
+  }) = _IconButtonComponent;
+}
+
+class _OutlinedButtonComponent extends ButtonComponent {
+  const _OutlinedButtonComponent({
+    super.key,
+    super.onPressed,
+    required String text,
+    super.icon,
+  }) : super(text: text);
 
   @override
   Widget build(BuildContext context) {
-    return PrimaryButtonComponent(
-      key: key is ComponentKey ? key as ComponentKey : null,
-      onPressed: onPressed,
-      text: text,
-      icon: icon,
+    if (icon != null) {
+      return _disabled(
+        OutlinedButton.icon(
+          onPressed: onPressed,
+          label: Text(text!),
+          icon: Icon(icon),
+        ),
+      );
+    }
+    return _disabled(
+      OutlinedButton(
+        onPressed: onPressed,
+        child: Text(text!),
+      ),
+    );
+  }
+}
+
+class _PrimaryButtonComponent extends ButtonComponent {
+  const _PrimaryButtonComponent({
+    super.key,
+    super.onPressed,
+    required String text,
+    super.icon,
+  }) : super(text: text);
+
+  @override
+  Widget build(BuildContext context) {
+    if (icon != null) {
+      return _disabled(
+        FilledButton.icon(
+          onPressed: onPressed,
+          label: Text(text!),
+          icon: Icon(icon),
+        ),
+      );
+    }
+    return _disabled(
+      FilledButton(
+        onPressed: onPressed,
+        child: Text(text!),
+      ),
+    );
+  }
+}
+
+class _TextButtonComponent extends ButtonComponent {
+  const _TextButtonComponent({
+    super.key,
+    super.onPressed,
+    required String text,
+    super.icon,
+  }) : super(text: text);
+
+  @override
+  Widget build(BuildContext context) {
+    if (icon != null) {
+      return _disabled(
+        TextButton.icon(
+          onPressed: onPressed,
+          label: Text(text!),
+          icon: Icon(icon),
+        ),
+      );
+    }
+    return _disabled(
+      TextButton(
+        onPressed: onPressed,
+        child: Text(text!),
+      ),
+    );
+  }
+}
+
+class _IconButtonComponent extends ButtonComponent {
+  const _IconButtonComponent({
+    super.key,
+    super.onPressed,
+    required IconData icon,
+  }) : super(icon: icon);
+
+  @override
+  Widget build(BuildContext context) {
+    return _disabled(
+      IconButton(
+        onPressed: onPressed,
+        icon: Icon(icon!),
+      ),
     );
   }
 }

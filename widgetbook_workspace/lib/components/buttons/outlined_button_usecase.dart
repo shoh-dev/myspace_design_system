@@ -10,7 +10,7 @@ final _icon = Icons.send_rounded;
 
 @widgetbook.UseCase(name: 'Outlined Button', type: ButtonComponent)
 Widget buildOutlinedButtonUseCase(BuildContext context) {
-  return ButtonComponent.outlined(
+  return const ButtonComponent.outlined(
     text: "Outlined Button",
     onPressed: _onPressed,
   );
@@ -27,7 +27,7 @@ Widget buildIconOutlinedButtonUseCase(BuildContext context) {
 
 @widgetbook.UseCase(name: 'Outlined Button Disabled', type: ButtonComponent)
 Widget buildDisabledOutlinedButtonUseCase(BuildContext context) {
-  return ButtonComponent.outlined(
+  return const ButtonComponent.outlined(
     text: "Outlined Button Disabled",
   );
 }

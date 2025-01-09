@@ -2,7 +2,7 @@ import 'package:fcode_design_system/fcode_design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-@widgetbook.UseCase(name: 'Row', type: RowComponent)
+@widgetbook.UseCase(name: 'Row', type: LayoutComponent)
 Widget buildRow(BuildContext context) {
   return LayoutComponent.row(
     spacing: 12,
@@ -15,7 +15,7 @@ Widget buildRow(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Column', type: ColumnComponent)
+@widgetbook.UseCase(name: 'Column', type: LayoutComponent)
 Widget buildColumn(BuildContext context) {
   return LayoutComponent.column(
     mainAxisSize: MainAxisSize.min,
@@ -28,7 +28,7 @@ Widget buildColumn(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(name: 'Stack', type: StackComponent)
+@widgetbook.UseCase(name: 'Stack', type: LayoutComponent)
 Widget buildStack(BuildContext context) {
   return LayoutComponent.stack(
     children: [

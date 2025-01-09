@@ -99,27 +99,23 @@ final directories = <_i1.WidgetbookNode>[
           _i1.WidgetbookFolder(
             name: 'layout',
             children: [
-              _i1.WidgetbookLeafComponent(
-                name: 'ColumnComponent',
-                useCase: _i1.WidgetbookUseCase(
-                  name: 'Column',
-                  builder: _i6.buildColumn,
-                ),
-              ),
-              _i1.WidgetbookLeafComponent(
-                name: 'RowComponent',
-                useCase: _i1.WidgetbookUseCase(
-                  name: 'Row',
-                  builder: _i6.buildRow,
-                ),
-              ),
-              _i1.WidgetbookLeafComponent(
-                name: 'StackComponent',
-                useCase: _i1.WidgetbookUseCase(
-                  name: 'Stack',
-                  builder: _i6.buildStack,
-                ),
-              ),
+              _i1.WidgetbookComponent(
+                name: 'LayoutComponent',
+                useCases: [
+                  _i1.WidgetbookUseCase(
+                    name: 'Column',
+                    builder: _i6.buildColumn,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'Row',
+                    builder: _i6.buildRow,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'Stack',
+                    builder: _i6.buildStack,
+                  ),
+                ],
+              )
             ],
           ),
           _i1.WidgetbookFolder(

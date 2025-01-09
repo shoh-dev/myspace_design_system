@@ -7,29 +7,29 @@ abstract class TextComponent extends Component {
   const TextComponent({super.key});
 
   factory TextComponent.hardCoded(String text, {bool ignoreLog}) =
-      HardCodedTextComponent._;
+      _HardCodedTextComponent;
 
-  const factory TextComponent.number(num number) = NumberTextComponent._;
+  const factory TextComponent.number(num number) = _NumberTextComponent;
 
-  const factory TextComponent.any(dynamic value) = AnyTextComponent._;
+  const factory TextComponent.any(dynamic value) = _AnyTextComponent;
 
-  const factory TextComponent.currency(num number) = CurrencyTextComponent._;
+  const factory TextComponent.currency(num number) = _CurrencyTextComponent;
 }
 
-class HardCodedTextComponent extends TextComponent {
+class _HardCodedTextComponent extends TextComponent {
   final String text;
   final bool ignoreLog;
 
-  HardCodedTextComponent._(this.text, {this.ignoreLog = false}) {
+  _HardCodedTextComponent(this.text, {this.ignoreLog = false}) {
     if (!ignoreLog) {
       try {
         final stackTrace = StackTrace.current;
         final fileName = stackTrace.toString().split('\n')[1];
         log("\n${fileName.replaceAll("     ", "")}",
-            name: 'HardCodedTextComponentValue');
+            name: '_HardCodedTextComponentValue');
       } catch (e) {
         log("Error occurred while logging $e",
-            name: 'HardCodedTextComponentValue');
+            name: '_HardCodedTextComponentValue');
       }
     }
   }
@@ -40,8 +40,8 @@ class HardCodedTextComponent extends TextComponent {
   }
 }
 
-class AnyTextComponent extends TextComponent {
-  const AnyTextComponent._(this.value);
+class _AnyTextComponent extends TextComponent {
+  const _AnyTextComponent(this.value);
 
   final dynamic value;
 
@@ -51,8 +51,8 @@ class AnyTextComponent extends TextComponent {
   }
 }
 
-class NumberTextComponent extends TextComponent {
-  const NumberTextComponent._(this.number);
+class _NumberTextComponent extends TextComponent {
+  const _NumberTextComponent(this.number);
 
   final num number;
 
@@ -63,8 +63,8 @@ class NumberTextComponent extends TextComponent {
   }
 }
 
-class CurrencyTextComponent extends TextComponent {
-  const CurrencyTextComponent._(this.number);
+class _CurrencyTextComponent extends TextComponent {
+  const _CurrencyTextComponent(this.number);
 
   final num number;
 
