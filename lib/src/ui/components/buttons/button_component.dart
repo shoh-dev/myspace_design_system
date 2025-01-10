@@ -6,6 +6,7 @@ import 'types/outlined.dart';
 import 'types/icon.dart';
 import 'types/primary.dart';
 import 'types/text.dart';
+import 'types/destructive.dart';
 
 abstract class ButtonComponent extends Component {
   const ButtonComponent({super.key, this.onPressed, this.text, this.icon});
@@ -40,4 +41,11 @@ abstract class ButtonComponent extends Component {
     VoidCallback? onPressed,
     required IconData icon,
   }) = IconButtonComponent;
+
+  const factory ButtonComponent.destructive({
+    ComponentKey? key,
+    VoidCallback? onPressed,
+    required String text,
+    IconData? icon,
+  }) = DestructiveButtonComponent;
 }
