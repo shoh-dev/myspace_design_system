@@ -2,125 +2,79 @@ import 'dart:developer';
 
 import 'package:myspace_design_system/myspace_design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 void _onPressed() => log("Button Pressed");
 
 const _icon = Icons.send_rounded;
 
-@widgetbook.UseCase(name: 'Icon Button', type: ButtonComponent)
-Widget buildIconButtonUseCase(BuildContext context) {
-  return const ButtonComponent.icon(
-    onPressed: _onPressed,
-    icon: _icon,
-  );
+bool _getEnabledKnob(BuildContext context) {
+  return context.knobs.boolean(label: "Enabled", initialValue: true);
 }
 
-@widgetbook.UseCase(name: 'Icon Button Disabled', type: ButtonComponent)
-Widget buildDisabledIconButtonUseCase(BuildContext context) {
-  return const ButtonComponent.icon(
-    icon: _icon,
-  );
+bool _getWithIconKnob(BuildContext context) {
+  return context.knobs.boolean(label: "With Icon");
+}
+
+//Outlined icon Button
+@widgetbook.UseCase(name: 'Icon Button', type: ButtonComponent)
+Widget buildIconButton(BuildContext context) {
+  final buttonList = <Widget>[
+    ButtonComponent.iconOutlined(
+      onPressed: _getEnabledKnob(context) ? _onPressed : null,
+      icon: _icon,
+    ),
+    ButtonComponent.icon(
+      onPressed: _getEnabledKnob(context) ? _onPressed : null,
+      icon: _icon,
+    ),
+  ];
+
+  return context.knobs.list<Widget>(
+      label: "Button type",
+      labelBuilder: (widget) {
+        if (widget == buttonList[0]) {
+          return "Outlined";
+        }
+        return "Contained";
+      },
+      options: buttonList);
 }
 
 @widgetbook.UseCase(name: 'Outlined Button', type: ButtonComponent)
-Widget buildOutlinedButtonUseCase(BuildContext context) {
-  return const ButtonComponent.outlined(
+Widget buildOutlinedButton(BuildContext context) {
+  return ButtonComponent.outlined(
     text: "Outlined Button",
-    onPressed: _onPressed,
-  );
-}
-
-@widgetbook.UseCase(name: 'Outlined Button with Icon', type: ButtonComponent)
-Widget buildIconOutlinedButtonUseCase(BuildContext context) {
-  return const ButtonComponent.outlined(
-    text: "Outlined Button with Icon",
-    onPressed: _onPressed,
-    icon: _icon,
-  );
-}
-
-@widgetbook.UseCase(name: 'Outlined Button Disabled', type: ButtonComponent)
-Widget buildDisabledOutlinedButtonUseCase(BuildContext context) {
-  return const ButtonComponent.outlined(
-    text: "Outlined Button Disabled",
-  );
-}
-
-//Outlined Disabled with Icon
-@widgetbook.UseCase(
-    name: 'Outlined Button Disabled with Icon', type: ButtonComponent)
-Widget buildDisabledIconOutlinedButtonUseCase(BuildContext context) {
-  return const ButtonComponent.outlined(
-    text: "Outlined Button Disabled with Icon",
-    icon: _icon,
+    icon: _getWithIconKnob(context) ? _icon : null,
+    onPressed: _getEnabledKnob(context) ? _onPressed : null,
   );
 }
 
 @widgetbook.UseCase(name: 'Primary Button', type: ButtonComponent)
-Widget buildPrimaryButtonUseCase(BuildContext context) {
-  return const ButtonComponent.primary(
+Widget buildPrimaryButton(BuildContext context) {
+  return ButtonComponent.primary(
     text: "Primary Button",
-    onPressed: _onPressed,
-  );
-}
-
-@widgetbook.UseCase(name: 'Primary Button with Icon', type: ButtonComponent)
-Widget buildIconPrimaryButtonUseCase(BuildContext context) {
-  return const ButtonComponent.primary(
-    text: "Primary Button with Icon",
-    onPressed: _onPressed,
-    icon: _icon,
-  );
-}
-
-@widgetbook.UseCase(name: 'Primary Button Disabled', type: ButtonComponent)
-Widget buildDisabledPrimaryButtonUseCase(BuildContext context) {
-  return const ButtonComponent.primary(
-    text: "Primary Button Disabled",
-  );
-}
-
-//Primary Disabled with Icon
-@widgetbook.UseCase(
-    name: 'Primary Button Disabled with Icon', type: ButtonComponent)
-Widget buildDisabledIconPrimaryButtonUseCase(BuildContext context) {
-  return const ButtonComponent.primary(
-    text: "Primary Button Disabled with Icon",
-    icon: _icon,
+    onPressed: _getEnabledKnob(context) ? _onPressed : null,
+    icon: _getWithIconKnob(context) ? _icon : null,
   );
 }
 
 @widgetbook.UseCase(name: 'Text Button', type: ButtonComponent)
-Widget buildTextButtonUseCase(BuildContext context) {
-  return const ButtonComponent.text(
+Widget buildTextButton(BuildContext context) {
+  return ButtonComponent.text(
     text: "Text Button",
-    onPressed: _onPressed,
+    onPressed: _getEnabledKnob(context) ? _onPressed : null,
+    icon: _getWithIconKnob(context) ? _icon : null,
   );
 }
 
-@widgetbook.UseCase(name: 'Text Button with Icon', type: ButtonComponent)
-Widget buildIconTextButtonUseCase(BuildContext context) {
-  return const ButtonComponent.text(
-    text: "Text Button with Icon",
-    onPressed: _onPressed,
-    icon: _icon,
-  );
-}
-
-@widgetbook.UseCase(name: 'Text Button Disabled', type: ButtonComponent)
-Widget buildDisabledTextButtonUseCase(BuildContext context) {
-  return const ButtonComponent.text(
-    text: "Text Button Disabled",
-  );
-}
-
-//Text Disabled with Icon
-@widgetbook.UseCase(
-    name: 'Text Button Disabled with Icon', type: ButtonComponent)
-Widget buildDisabledIconTextButtonUseCase(BuildContext context) {
-  return const ButtonComponent.text(
-    text: "Text Button Disabled with Icon",
-    icon: _icon,
+//Destructive Button
+@widgetbook.UseCase(name: 'Destructive Button', type: ButtonComponent)
+Widget buildDestructiveButton(BuildContext context) {
+  return ButtonComponent.destructive(
+    text: "Destructive Button",
+    icon: _getWithIconKnob(context) ? _icon : null,
+    onPressed: _getEnabledKnob(context) ? _onPressed : null,
   );
 }

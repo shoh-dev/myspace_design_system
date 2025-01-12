@@ -64,7 +64,12 @@ class _WidgetbookAppState extends State<WidgetbookApp> {
     return Widgetbook.material(
       directories: directories,
       addons: [
-        MaterialThemeAddon(initialTheme: themes[1], themes: themes),
+        MaterialThemeAddon(
+            initialTheme:
+                MediaQuery.of(context).platformBrightness == Brightness.light
+                    ? themes[0]
+                    : themes[1],
+            themes: themes),
         DeviceFrameAddon(initialDevice: frames.first, devices: frames),
         AlignmentAddon(initialAlignment: Alignment.center),
       ],

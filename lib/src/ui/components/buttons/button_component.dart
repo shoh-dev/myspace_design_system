@@ -48,4 +48,10 @@ abstract class ButtonComponent extends Component {
     required String text,
     IconData? icon,
   }) = DestructiveButtonComponent;
+
+  const factory ButtonComponent.iconOutlined({
+    ComponentKey? key,
+    VoidCallback? onPressed,
+    required IconData icon,
+  }) = IconButtonComponentOutlined;
 }

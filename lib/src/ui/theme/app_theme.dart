@@ -84,6 +84,106 @@ class FCodeTheme {
 
   // Icon Button Theme Data End
 
+  // Input Theme Data Start
+
+  late final _textFieldThemeDataLight = InputDecorationTheme(
+    filled: true,
+    floatingLabelBehavior: FloatingLabelBehavior.never,
+    hintStyle: TextStyle(
+      fontSize: 14,
+      color: _colorSchemeLight.onSurface.withValues(alpha: 0.38),
+    ),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.zero,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeLight.primary,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeLight.error,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeLight.error,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeLight.outline,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    disabledBorder: const OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.transparent,
+        width: 0,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+  );
+
+  late final _textFieldThemeDataDark = InputDecorationTheme(
+    filled: true,
+    floatingLabelBehavior: FloatingLabelBehavior.never,
+    hintStyle: TextStyle(
+      fontSize: 14,
+      color: _colorSchemeDark.onSurface.withValues(alpha: 0.38),
+    ),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.zero,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeDark.primary,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeDark.error,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeDark.error,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        color: _colorSchemeDark.outline,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+    disabledBorder: const OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.transparent,
+        width: 0,
+      ),
+      borderRadius: BorderRadius.zero,
+    ),
+  );
+
+  // Input Theme Data End
+
   late final ThemeData lightTheme = ThemeData.light().copyWith(
     scaffoldBackgroundColor: Colors.grey.shade300,
     colorScheme: _colorSchemeLight,
@@ -92,6 +192,7 @@ class FCodeTheme {
     outlinedButtonTheme: _outlinedButtonThemeDataLight,
     textButtonTheme: _textButtonThemeDataLight,
     iconButtonTheme: _iconButtonThemeDataLight,
+    inputDecorationTheme: _textFieldThemeDataLight,
   );
 
   late final ThemeData darkTheme = ThemeData.dark().copyWith(
@@ -102,5 +203,6 @@ class FCodeTheme {
     outlinedButtonTheme: _outlinedButtonThemeDataDark,
     textButtonTheme: _textButtonThemeDataDark,
     iconButtonTheme: _iconButtonThemeDataDark,
+    inputDecorationTheme: _textFieldThemeDataDark,
   );
 }

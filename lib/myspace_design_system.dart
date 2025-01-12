@@ -6,6 +6,7 @@ export 'src/ui/components/key/key.dart';
 export 'src/ui/components/buttons/button_component.dart';
 export 'src/ui/components/text/text_component.dart';
 export 'src/ui/components/layout/layout.dart';
+export 'src/ui/components/form/form_component.dart';
 
 // ----> Components End <----
 

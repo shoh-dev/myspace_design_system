@@ -15,14 +15,14 @@ abstract class LayoutComponent extends Component {
     this.mainAxisSize,
   });
 
-  final List<Component> children;
+  final List<Widget> children;
   final double? spacing;
   final MainAxisAlignment? mainAxisAlignment;
   final CrossAxisAlignment? crossAxisAlignment;
   final MainAxisSize? mainAxisSize;
 
   const factory LayoutComponent.row({
-    required final List<Component> children,
+    required final List<Widget> children,
     double? spacing,
     MainAxisAlignment? mainAxisAlignment,
     CrossAxisAlignment? crossAxisAlignment,
@@ -30,7 +30,7 @@ abstract class LayoutComponent extends Component {
   }) = RowComponent;
 
   const factory LayoutComponent.column({
-    required final List<Component> children,
+    required final List<Widget> children,
     double? spacing,
     MainAxisAlignment? mainAxisAlignment,
     CrossAxisAlignment? crossAxisAlignment,
@@ -39,6 +39,6 @@ abstract class LayoutComponent extends Component {
 
   /// Not finished yet
   const factory LayoutComponent.stack({
-    required final List<Component> children,
+    required final List<Widget> children,
   }) = StackComponent;
 }
