@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:myspace_design_system/src/ui/components/buttons/button_component.dart';
 import 'package:myspace_design_system/src/ui/components/component/component.dart';
 import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/layout/layout.dart';
@@ -15,53 +18,18 @@ class DropdownComponent<T> extends FormFieldComponent<DropdownItem<T>> {
     ValueChanged<DropdownItem<T>?>? onChanged,
     String? hintText,
     String? label,
-
-    // /// Return item index if found, otherwise return null
-    // SearchCallback<DropdownItem<T>>? searchCallback,
+    bool canUnselect = false,
   }) : super(
           builder: (field) {
-            // final context = field.context;
-            return DisabledComponent(
-              isDisabled: !enabled,
-              child: LayoutComponent.column(
-                mainAxisSize: MainAxisSize.min,
-                spacing: 4,
-                children: [
-                  if (label != null)
-                    FormFieldLabel(
-                      label,
-                      hasError: field.hasError,
-                    ),
-                  DropdownMenu<DropdownItem<T>>(
-                    dropdownMenuEntries: [
-                      for (final item in items)
-                        DropdownMenuEntry(
-                          value: item,
-                          label: item.label,
-                        ),
-                    ],
-                    searchCallback: (entries, query) {
-                      if (query.isEmpty) return null;
-                      final index = entries.indexWhere((element) {
-                        return element.label
-                            .toLowerCase()
-                            .contains(query.toLowerCase());
-                      });
-                      return index == -1 ? null : index;
-                    },
-                    initialSelection: initialValue,
-                    hintText: hintText,
-                    enabled: enabled,
-                    errorText: field.errorText,
-                    expandedInsets: EdgeInsets.zero,
-                    enableFilter: true,
-                    onSelected: (value) {
-                      field.didChange(value);
-                      onChanged?.call(value);
-                    },
-                  ),
-                ],
-              ),
+            return _Menu<T>(
+              field: field,
+              onChanged: onChanged,
+              hintText: hintText,
+              label: label,
+              canUnselect: canUnselect,
+              enabled: enabled,
+              items: items,
+              initialValue: initialValue,
             );
           },
         ) {
@@ -80,6 +48,116 @@ class _DropdownComponentState<T>
   void initState() {
     super.initState();
     if (widget.initialValue != null) setValue(widget.initialValue);
+  }
+}
+
+class _Menu<T> extends StatefulWidget {
+  const _Menu({
+    super.key,
+    required this.field,
+    this.onChanged,
+    this.hintText,
+    this.label,
+    this.canUnselect = false,
+    required this.enabled,
+    required this.items,
+    this.initialValue,
+  });
+
+  final FormFieldState<DropdownItem<T>> field;
+  final ValueChanged<DropdownItem<T>?>? onChanged;
+  final String? hintText;
+  final String? label;
+  final bool canUnselect;
+  final bool enabled;
+  final Iterable<DropdownItem<T>> items;
+  final DropdownItem<T>? initialValue;
+
+  @override
+  State<_Menu> createState() => __MenuState<T>();
+}
+
+class __MenuState<T> extends State<_Menu<T>> {
+  FormFieldState<DropdownItem<T>> get field => widget.field;
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    log('_Menu dispose');
+    super.dispose();
+  }
+
+  bool get canShowResetButton {
+    if (widget.initialValue == field.value) return false;
+    return widget.canUnselect && field.value != null && widget.enabled;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DisabledComponent(
+      isDisabled: !widget.enabled,
+      child: LayoutComponent.column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 4,
+        children: [
+          if (widget.label != null)
+            FormFieldLabel(
+              widget.label!,
+              hasError: field.hasError,
+            ),
+          DropdownMenu<DropdownItem<T>>(
+            controller: _controller,
+            dropdownMenuEntries: [
+              for (final item in widget.items)
+                DropdownMenuEntry(
+                  value: item,
+                  label: item.label,
+                  leadingIcon: item.label == field.value?.label
+                      ? const Icon(Icons.check)
+                      : null,
+                ),
+            ],
+            searchCallback: (entries, query) {
+              if (query.isEmpty) return null;
+              final index = entries.indexWhere((element) {
+                return element.label
+                    .toLowerCase()
+                    .contains(query.toLowerCase());
+              });
+              return index == -1 ? null : index;
+            },
+            leadingIcon: canShowResetButton
+                ? Transform.scale(
+                    scale: .6,
+                    child: ButtonComponent.iconOutlined(
+                      icon: Icons.clear_rounded,
+                      onPressed: () => reset(context),
+                    ),
+                  )
+                : null,
+            initialSelection: widget.initialValue,
+            hintText: widget.hintText,
+            enabled: widget.enabled,
+            enableSearch: false,
+            enableFilter: false,
+            errorText: field.errorText,
+            expandedInsets: EdgeInsets.zero,
+            onSelected: (value) {
+              field.didChange(value);
+              widget.onChanged?.call(value);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void reset(BuildContext context) {
+    field.reset();
+    widget.onChanged?.call(null);
+    _controller.clear();
+    FocusScope.of(context).unfocus();
   }
 }
 

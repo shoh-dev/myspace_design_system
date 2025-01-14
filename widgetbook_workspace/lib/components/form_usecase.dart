@@ -29,17 +29,17 @@ Widget buildCheckbox(BuildContext context) {
 @UseCase(name: 'Dropdown Component', type: FormFieldComponent)
 Widget buildDropdown(BuildContext context) {
   return DropdownComponent<String>(
+    enabled: context.knobs.boolean(label: "Enabled", initialValue: true),
+    canUnselect:
+        context.knobs.boolean(label: "Can Unselect", initialValue: false),
     items: [
       DropdownItem(value: "1", label: "One"),
       DropdownItem(value: "2", label: "Two"),
       DropdownItem(value: "3", label: "Three"),
     ],
-    // initialValue: DropdownItem(value: "1", label: "One"),
-    onChanged: (value) {},
-    hintText: "Select an item",
+    hintText: context.knobs.string(label: "Hint Text", initialValue: "Select"),
     initialValue: context.knobs.list(
       label: "Initial Value",
-      initialOption: DropdownItem(value: "3", label: "Three"),
       options: [
         DropdownItem(value: "1", label: "One"),
         DropdownItem(value: "2", label: "Two"),
@@ -49,7 +49,7 @@ Widget buildDropdown(BuildContext context) {
         return value?.label ?? "";
       },
     ),
-    label: "Dropdown",
+    label: context.knobs.string(label: "Label", initialValue: "Dropdown"),
     validator: (value) => value?.value == "1" ? null : 'Please select One',
   );
 }
