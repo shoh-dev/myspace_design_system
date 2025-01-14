@@ -7,19 +7,24 @@ class FormFieldLabel extends Component {
     this.label, {
     super.key,
     this.onPressed,
+    this.hasError = false,
   });
 
   final String label;
   final VoidCallback? onPressed;
+  final bool hasError;
 
   @override
   Widget build(BuildContext context) {
+    final style = context.textTheme.bodyMedium!.copyWith(
+      color: hasError ? context.theme.colorScheme.error : null,
+    );
     if (onPressed == null) {
-      return Text(label, style: context.textTheme.bodyMedium);
+      return Text(label, style: style);
     }
     return GestureDetector(
       onTap: onPressed,
-      child: Text(label, style: context.textTheme.bodyMedium),
+      child: Text(label, style: style),
     );
   }
 }

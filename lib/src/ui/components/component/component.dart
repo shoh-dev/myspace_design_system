@@ -13,6 +13,7 @@ abstract class FormFieldComponent<T> extends FormField<T> {
     super.initialValue,
     super.onSaved,
     super.validator,
+    super.autovalidateMode = AutovalidateMode.onUserInteraction,
   });
 }
 

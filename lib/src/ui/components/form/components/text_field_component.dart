@@ -24,18 +24,22 @@ class TextFieldComponent extends FormFieldComponent<String> {
                 mainAxisSize: MainAxisSize.min,
                 spacing: 4,
                 children: [
-                  if (label != null) FormFieldLabel(label),
+                  if (label != null)
+                    FormFieldLabel(
+                      label,
+                      hasError: field.hasError,
+                    ),
                   TextFormField(
                     validator: validator,
                     initialValue: initialValue,
                     onChanged: onChanged,
                     decoration: InputDecoration(hintText: hintText),
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: !enabled
-                              ? context.colorScheme.onSurface
-                                  .withValues(alpha: 0.5)
-                              : null,
-                        ),
+                    // style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    //       color: !enabled
+                    //           ? context.colorScheme.onSurface
+                    //               .withValues(alpha: 0.5)
+                    //           : null,
+                    //     ),
                     enabled: enabled,
                   ),
                 ],

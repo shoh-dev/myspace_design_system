@@ -28,6 +28,11 @@ class CheckboxComponent extends FormFieldComponent<bool> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Checkbox(
+                        side: hasError
+                            ? BorderSide(
+                                width: 1.5,
+                                color: field.context.theme.colorScheme.error)
+                            : null,
                         value: field.value,
                         onChanged: enabled
                             ? (value) {
@@ -39,6 +44,7 @@ class CheckboxComponent extends FormFieldComponent<bool> {
                       if (label != null)
                         FormFieldLabel(
                           label,
+                          hasError: hasError,
                           onPressed: () {
                             field.didChange(
                                 field.value == null ? null : !field.value!);

@@ -63,8 +63,12 @@ final directories = <_i1.WidgetbookNode>[
                     builder: _i3.buildCheckbox,
                   ),
                   _i1.WidgetbookUseCase(
+                    name: 'Dropdown Component',
+                    builder: _i3.buildDropdown,
+                  ),
+                  _i1.WidgetbookUseCase(
                     name: 'Text Field Component',
-                    builder: _i3.buildTextFieldInitialComponent,
+                    builder: _i3.buildTextField,
                   ),
                 ],
               )

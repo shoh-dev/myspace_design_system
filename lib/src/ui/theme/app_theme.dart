@@ -184,6 +184,26 @@ class FCodeTheme {
 
   // Input Theme Data End
 
+  // // Menu Theme Data Start
+
+  // late final _menuThemeDataLight = const MenuThemeData();
+
+  // late final _menuThemeDataDark = const MenuThemeData();
+
+  // // Menu Theme Data End
+
+  // Dropdown Menu Theme Data Start
+
+  late final _dropdownMenuThemeDataLight = DropdownMenuThemeData(
+    inputDecorationTheme: _textFieldThemeDataLight,
+  );
+
+  late final _dropdownMenuThemeDataDark = DropdownMenuThemeData(
+    inputDecorationTheme: _textFieldThemeDataDark,
+  );
+
+  // Dropdown Menu Theme Data End
+
   late final ThemeData lightTheme = ThemeData.light().copyWith(
     scaffoldBackgroundColor: Colors.grey.shade300,
     colorScheme: _colorSchemeLight,
@@ -193,6 +213,8 @@ class FCodeTheme {
     textButtonTheme: _textButtonThemeDataLight,
     iconButtonTheme: _iconButtonThemeDataLight,
     inputDecorationTheme: _textFieldThemeDataLight,
+    // menuTheme: _menuThemeDataLight,
+    dropdownMenuTheme: _dropdownMenuThemeDataLight,
   );
 
   late final ThemeData darkTheme = ThemeData.dark().copyWith(
@@ -204,5 +226,7 @@ class FCodeTheme {
     textButtonTheme: _textButtonThemeDataDark,
     iconButtonTheme: _iconButtonThemeDataDark,
     inputDecorationTheme: _textFieldThemeDataDark,
+    // menuTheme: _menuThemeDataDark,
+    dropdownMenuTheme: _dropdownMenuThemeDataDark,
   );
 }
