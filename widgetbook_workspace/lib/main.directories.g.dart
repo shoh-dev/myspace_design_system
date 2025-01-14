@@ -53,27 +53,21 @@ final directories = <_i1.WidgetbookNode>[
             ],
           ),
           _i1.WidgetbookFolder(
-            name: 'form',
+            name: 'component',
             children: [
-              _i1.WidgetbookLeafComponent(
-                name: 'FormComponent',
-                useCase: _i1.WidgetbookUseCase(
-                  name: 'Text Field Component',
-                  builder: _i3.buildTextFieldInitialComponent,
-                ),
-              ),
-              _i1.WidgetbookFolder(
-                name: 'components',
-                children: [
-                  _i1.WidgetbookLeafComponent(
-                    name: 'CheckboxComponent',
-                    useCase: _i1.WidgetbookUseCase(
-                      name: 'Checkbox Component',
-                      builder: _i3.buildCheckbox,
-                    ),
-                  )
+              _i1.WidgetbookComponent(
+                name: 'FormFieldComponent',
+                useCases: [
+                  _i1.WidgetbookUseCase(
+                    name: 'Checkbox Component',
+                    builder: _i3.buildCheckbox,
+                  ),
+                  _i1.WidgetbookUseCase(
+                    name: 'Text Field Component',
+                    builder: _i3.buildTextFieldInitialComponent,
+                  ),
                 ],
-              ),
+              )
             ],
           ),
           _i1.WidgetbookFolder(

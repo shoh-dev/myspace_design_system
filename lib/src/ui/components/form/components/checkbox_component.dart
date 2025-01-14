@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myspace_design_system/myspace_design_system.dart';
-import 'package:myspace_design_system/src/ui/components/component/component.dart';
+import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_error_text.dart';
+import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 import 'package:myspace_design_system/utils/helpers/theme.dart';
 
@@ -12,38 +13,49 @@ class CheckboxComponent extends FormFieldComponent<bool> {
     super.initialValue,
     super.onSaved,
     super.validator,
+    this.label,
   }) : super(
           builder: (field) {
             final hasError = field.hasError;
             final errorText = field.errorText;
-            final context = field.context;
             return LayoutComponent.column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 DisabledComponent(
                   isDisabled: !enabled,
-                  child: Checkbox(
-                    value: field.value,
-                    onChanged: enabled
-                        ? (value) {
-                            field.didChange(value);
-                            onChanged?.call(value);
-                          }
-                        : null,
+                  child: LayoutComponent.row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Checkbox(
+                        value: field.value,
+                        onChanged: enabled
+                            ? (value) {
+                                field.didChange(value);
+                                onChanged?.call(value);
+                              }
+                            : null,
+                      ),
+                      if (label != null)
+                        FormFieldLabel(
+                          label,
+                          onPressed: () {
+                            field.didChange(
+                                field.value == null ? null : !field.value!);
+                            onChanged?.call(field.value);
+                          },
+                        ),
+                    ],
                   ),
                 ),
-                if (hasError)
-                  Text(
-                    errorText!,
-                    style: context.textTheme.bodySmall!
-                        .copyWith(color: context.colorScheme.error),
-                  ),
+                if (hasError) FormFieldErrorText(errorText!),
               ],
             );
           },
         );
 
   final ValueChanged<bool?>? onChanged;
+  final String? label;
 
   @override
   FormFieldState<bool> createState() => _CheckboxComponentState();
