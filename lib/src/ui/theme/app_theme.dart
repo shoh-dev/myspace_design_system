@@ -100,7 +100,7 @@ class FCodeTheme {
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeLight.primary,
-        width: 1,
+        width: 1.5,
       ),
       borderRadius: BorderRadius.zero,
     ),
@@ -148,7 +148,7 @@ class FCodeTheme {
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeDark.primary,
-        width: 1,
+        width: 1.5,
       ),
       borderRadius: BorderRadius.zero,
     ),

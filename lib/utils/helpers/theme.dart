@@ -7,7 +7,7 @@ extension ThemeHelpers on BuildContext {
   Color get dividerColor => theme.dividerColor;
 
   //text theme
-  Typography get textTheme => theme.typography;
+  TextTheme get textTheme => theme.textTheme;
 
   //color scheme
   ColorScheme get colorScheme => theme.colorScheme;
