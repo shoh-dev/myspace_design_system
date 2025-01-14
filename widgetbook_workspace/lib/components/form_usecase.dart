@@ -35,9 +35,7 @@ Widget buildDropdown(BuildContext context) {
       DropdownItem(value: "3", label: "Three"),
     ],
     // initialValue: DropdownItem(value: "1", label: "One"),
-    onChanged: (value) {
-      print(value);
-    },
+    onChanged: (value) {},
     hintText: "Select an item",
     initialValue: context.knobs.list(
       label: "Initial Value",

@@ -3,7 +3,6 @@ import 'package:myspace_design_system/src/ui/components/component/component.dart
 import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/layout/layout.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
-import 'package:myspace_design_system/utils/helpers/theme.dart';
 
 class TextFieldComponent extends FormFieldComponent<String> {
   TextFieldComponent({
@@ -17,7 +16,6 @@ class TextFieldComponent extends FormFieldComponent<String> {
     this.label,
   }) : super(
           builder: (field) {
-            final context = field.context;
             return DisabledComponent(
               isDisabled: !enabled,
               child: LayoutComponent.column(
