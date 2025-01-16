@@ -45,9 +45,7 @@ Widget buildDropdown(BuildContext context) {
         DropdownItem(value: "2", label: "Two"),
         DropdownItem(value: "3", label: "Three"),
       ],
-      labelBuilder: (value) {
-        return value?.label ?? "";
-      },
+      labelBuilder: (value) => value?.label ?? "Select",
     ),
     label: context.knobs.string(label: "Label", initialValue: "Dropdown"),
     validator: (value) => value?.value == "1" ? null : 'Please select One',
