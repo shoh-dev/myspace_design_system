@@ -62,6 +62,8 @@ class _WidgetbookAppState extends State<WidgetbookApp> {
   @override
   Widget build(BuildContext context) {
     return Widgetbook.material(
+      // initialRoute:
+      // "/ui/components/datatable/datatablecomponent/datatable-component",
       directories: directories,
       addons: [
         MaterialThemeAddon(

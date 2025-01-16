@@ -5,6 +5,12 @@ abstract class Component extends StatelessWidget {
   const Component({ComponentKey? key}) : super(key: key);
 }
 
+abstract class StatefulComonent extends StatefulWidget {
+  const StatefulComonent({super.key});
+}
+
+abstract class ComponentState<T extends StatefulComonent> extends State<T> {}
+
 abstract class FormFieldComponent<T> extends FormField<T> {
   const FormFieldComponent({
     super.key,

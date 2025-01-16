@@ -11,9 +11,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:widgetbook/widgetbook.dart' as _i1;
 import 'package:widgetbook_workspace/components/button_usecase.dart' as _i2;
+import 'package:widgetbook_workspace/components/datatable_usecase.dart' as _i4;
 import 'package:widgetbook_workspace/components/form_usecase.dart' as _i3;
-import 'package:widgetbook_workspace/components/layout_usecase.dart' as _i4;
-import 'package:widgetbook_workspace/components/text_usecase.dart' as _i5;
+import 'package:widgetbook_workspace/components/layout_usecase.dart' as _i5;
+import 'package:widgetbook_workspace/components/text_usecase.dart' as _i6;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
@@ -75,6 +76,18 @@ final directories = <_i1.WidgetbookNode>[
             ],
           ),
           _i1.WidgetbookFolder(
+            name: 'datatable',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'DatatableComponent',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Datatable Component',
+                  builder: _i4.buildDatatable,
+                ),
+              )
+            ],
+          ),
+          _i1.WidgetbookFolder(
             name: 'layout',
             children: [
               _i1.WidgetbookComponent(
@@ -82,15 +95,15 @@ final directories = <_i1.WidgetbookNode>[
                 useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Column',
-                    builder: _i4.buildColumn,
+                    builder: _i5.buildColumn,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Row',
-                    builder: _i4.buildRow,
+                    builder: _i5.buildRow,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Stack',
-                    builder: _i4.buildStack,
+                    builder: _i5.buildStack,
                   ),
                 ],
               )
@@ -104,19 +117,19 @@ final directories = <_i1.WidgetbookNode>[
                 useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Any Data Text',
-                    builder: _i5.buildAnyDataText,
+                    builder: _i6.buildAnyDataText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Currency Text',
-                    builder: _i5.buildCurrencyText,
+                    builder: _i6.buildCurrencyText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Hard Coded Text',
-                    builder: _i5.buildHardCodedText,
+                    builder: _i6.buildHardCodedText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Number Text',
-                    builder: _i5.buildNumberText,
+                    builder: _i6.buildNumberText,
                   ),
                 ],
               )

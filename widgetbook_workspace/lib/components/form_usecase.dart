@@ -7,7 +7,8 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 @UseCase(name: 'Text Field Component', type: FormFieldComponent)
 Widget buildTextField(BuildContext context) {
   return TextFieldComponent(
-    initialValue: context.knobs.string(label: "Initial Value"),
+    initialValue:
+        context.knobs.string(label: "Initial Value", initialValue: "ASSA"),
     enabled: context.knobs.boolean(label: "Enabled", initialValue: true),
     hintText: context.knobs
         .string(label: "Hint Text", initialValue: "Enter your text"),
