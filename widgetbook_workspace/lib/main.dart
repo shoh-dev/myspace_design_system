@@ -72,7 +72,7 @@ class _WidgetbookAppState extends State<WidgetbookApp> {
                     ? themes[0]
                     : themes[1],
             themes: themes),
-        DeviceFrameAddon(initialDevice: frames.first, devices: frames),
+        DeviceFrameAddon(devices: frames),
         AlignmentAddon(initialAlignment: Alignment.center),
       ],
     );
