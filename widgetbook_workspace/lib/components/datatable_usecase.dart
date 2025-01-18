@@ -28,18 +28,25 @@ const List<MyModel> models = [
 @widgetbook.UseCase(name: 'Datatable Component', type: DatatableComponent)
 Widget buildDatatable(BuildContext context) {
   return DatatableComponent(
+    onRowActionPressed: (row, value) {
+      print('Row action pressed for ${row.cells} with value ${value?.value}');
+    },
+    rowActions: [
+      DropdownItem<String>(value: 'edit', label: 'Edit'),
+      DropdownItem<String>(value: 'delete', label: 'Delete'),
+    ],
     columns: [
       ColumnDef.text(label: "Status"),
       ColumnDef.text(label: "Email"),
-      ColumnDef.number(label: "Amount"),
+      ColumnDef.text(label: "Amount"),
     ],
     rows: [
       for (var model in models)
         RowDef(
           cells: [
-            CellDef.text(text: model.status.name.toUpperCase()),
-            CellDef.text(text: model.email),
-            CellDef.currency(number: model.amount),
+            CellDef.text(model.status.name.toUpperCase()),
+            CellDef.text(model.email),
+            CellDef.currency(model.amount),
           ],
         ),
     ],

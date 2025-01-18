@@ -204,6 +204,22 @@ class FCodeTheme {
 
   // Dropdown Menu Theme Data End
 
+  // Popup Menu  Theme Data Start
+
+  late final _popupMenuThemeDataLight = PopupMenuThemeData(
+    shape: _noBorder,
+    position: PopupMenuPosition.under,
+    elevation: 4,
+  );
+
+  late final _popupMenuThemeDataDark = PopupMenuThemeData(
+    shape: _noBorder,
+    position: PopupMenuPosition.under,
+    elevation: 4,
+  );
+
+  // Popup Menu Theme Data End
+
   late final ThemeData lightTheme = ThemeData.light().copyWith(
     scaffoldBackgroundColor: Colors.grey.shade300,
     colorScheme: _colorSchemeLight,
@@ -215,6 +231,7 @@ class FCodeTheme {
     inputDecorationTheme: _textFieldThemeDataLight,
     // menuTheme: _menuThemeDataLight,
     dropdownMenuTheme: _dropdownMenuThemeDataLight,
+    popupMenuTheme: _popupMenuThemeDataLight,
   );
 
   late final ThemeData darkTheme = ThemeData.dark().copyWith(
@@ -228,5 +245,6 @@ class FCodeTheme {
     inputDecorationTheme: _textFieldThemeDataDark,
     // menuTheme: _menuThemeDataDark,
     dropdownMenuTheme: _dropdownMenuThemeDataDark,
+    popupMenuTheme: _popupMenuThemeDataDark,
   );
 }

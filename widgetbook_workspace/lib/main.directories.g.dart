@@ -14,7 +14,9 @@ import 'package:widgetbook_workspace/components/button_usecase.dart' as _i2;
 import 'package:widgetbook_workspace/components/datatable_usecase.dart' as _i4;
 import 'package:widgetbook_workspace/components/form_usecase.dart' as _i3;
 import 'package:widgetbook_workspace/components/layout_usecase.dart' as _i5;
-import 'package:widgetbook_workspace/components/text_usecase.dart' as _i6;
+import 'package:widgetbook_workspace/components/popup_meny_button_usecase.dart'
+    as _i6;
+import 'package:widgetbook_workspace/components/text_usecase.dart' as _i7;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookFolder(
@@ -110,6 +112,18 @@ final directories = <_i1.WidgetbookNode>[
             ],
           ),
           _i1.WidgetbookFolder(
+            name: 'popup_menu_button',
+            children: [
+              _i1.WidgetbookLeafComponent(
+                name: 'PopupMenuButtonComponent',
+                useCase: _i1.WidgetbookUseCase(
+                  name: 'Popup Menu Button',
+                  builder: _i6.buildPopupMenuButton,
+                ),
+              )
+            ],
+          ),
+          _i1.WidgetbookFolder(
             name: 'text',
             children: [
               _i1.WidgetbookComponent(
@@ -117,19 +131,19 @@ final directories = <_i1.WidgetbookNode>[
                 useCases: [
                   _i1.WidgetbookUseCase(
                     name: 'Any Data Text',
-                    builder: _i6.buildAnyDataText,
+                    builder: _i7.buildAnyDataText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Currency Text',
-                    builder: _i6.buildCurrencyText,
+                    builder: _i7.buildCurrencyText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Hard Coded Text',
-                    builder: _i6.buildHardCodedText,
+                    builder: _i7.buildHardCodedText,
                   ),
                   _i1.WidgetbookUseCase(
                     name: 'Number Text',
-                    builder: _i6.buildNumberText,
+                    builder: _i7.buildNumberText,
                   ),
                 ],
               )
