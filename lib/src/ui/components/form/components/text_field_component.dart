@@ -16,6 +16,7 @@ class TextFieldComponent extends FormFieldComponent<String> {
     String? hintText,
     String? label,
     bool canClear = false,
+    int? maxLines,
   }) : super(
           builder: (field) {
             return _Field(
@@ -27,6 +28,8 @@ class TextFieldComponent extends FormFieldComponent<String> {
               enabled: enabled,
               initialValue: initialValue,
               validator: validator,
+              onSaved: onSaved,
+              maxLines: maxLines,
             );
           },
         );
@@ -53,6 +56,8 @@ class _Field extends StatefulWidget {
     this.onChanged,
     this.initialValue,
     this.validator,
+    this.onSaved,
+    this.maxLines,
   });
 
   final FormFieldState<String> field;
@@ -63,6 +68,8 @@ class _Field extends StatefulWidget {
   final bool enabled;
   final String? initialValue;
   final FormFieldValidator<String>? validator;
+  final ValueChanged<String>? onSaved;
+  final int? maxLines;
 
   @override
   State<_Field> createState() => __FieldState();
@@ -113,6 +120,7 @@ class __FieldState extends State<_Field> {
             ),
           TextFormField(
             controller: _controller,
+            maxLines: widget.maxLines,
             validator: widget.validator,
             onChanged: widget.onChanged,
             decoration: InputDecoration(

@@ -2,34 +2,49 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 abstract class CellDef<T> {
-  const CellDef({required this.value});
+  const CellDef({
+    required this.value,
+    this.width,
+  });
 
   final T value;
 
   Widget build(BuildContext context);
 
+  final double? width;
+
   DataCell buildDataCell(BuildContext context) {
     return DataCell(
-      build(context),
+      SizedBox(width: width, child: build(context)),
     );
   }
 
-  static CellDef<String> text(String value) {
-    return TextCellDef(value: value);
+  static CellDef<String> text(
+    String value, {
+    double? width,
+  }) {
+    return TextCellDef(value: value, width: width);
   }
 
-  static CellDef<num> number(num value) {
-    return NumberCellDef(value: value);
+  static CellDef<num> number(
+    num value, {
+    double? width,
+  }) {
+    return NumberCellDef(value: value, width: width);
   }
 
-  static CellDef<num> currency(num value) {
-    return CurrencyCellDef(value: value);
+  static CellDef<num> currency(
+    num value, {
+    double? width,
+  }) {
+    return CurrencyCellDef(value: value, width: width);
   }
 }
 
 class TextCellDef extends CellDef<String> {
   const TextCellDef({
     required super.value,
+    super.width,
   });
 
   @override
@@ -46,6 +61,7 @@ class TextCellDef extends CellDef<String> {
 class NumberCellDef extends CellDef<num> {
   const NumberCellDef({
     required super.value,
+    super.width,
   });
 
   @override
@@ -62,6 +78,7 @@ class NumberCellDef extends CellDef<num> {
 class CurrencyCellDef extends CellDef<num> {
   const CurrencyCellDef({
     required super.value,
+    super.width,
   });
 
   @override

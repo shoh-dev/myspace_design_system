@@ -42,6 +42,6 @@ class TextColumnDef extends ColumnDef {
 
   @override
   Widget build(BuildContext context) {
-    return Text(label);
+    return Text(label, overflow: TextOverflow.ellipsis);
   }
 }
