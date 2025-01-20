@@ -50,22 +50,25 @@ class DatatableComponent extends Component {
               if (onRowActionPressed != null)
                 DataCell(
                   const SizedBox(),
-                  showEditIcon: true,
-                  onTapDown: (details) async {
-                    final position = context.findRelativeRectPosition(details);
+                  showEditIcon: !row.alwaysDisableEdit,
+                  onTapDown: row.alwaysDisableEdit
+                      ? null
+                      : (details) async {
+                          final position =
+                              context.findRelativeRectPosition(details);
 
-                    if (position == null) return;
+                          if (position == null) return;
 
-                    final action = await showMenu<DropdownItem<String>>(
-                        context: context,
-                        position: position,
-                        items: [
-                          for (var action in rowActions)
-                            PopupMenuItem(
-                                value: action, child: Text(action.label))
-                        ]);
-                    if (action != null) onRowActionPressed!(row, action);
-                  },
+                          final action = await showMenu<DropdownItem<String>>(
+                              context: context,
+                              position: position,
+                              items: [
+                                for (var action in rowActions)
+                                  PopupMenuItem(
+                                      value: action, child: Text(action.label))
+                              ]);
+                          if (action != null) onRowActionPressed!(row, action);
+                        },
                 ),
             ],
           ),
