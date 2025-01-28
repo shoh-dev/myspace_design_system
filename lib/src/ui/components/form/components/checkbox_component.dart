@@ -5,7 +5,7 @@ import 'package:myspace_design_system/src/ui/components/form/components/helper_w
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 import 'package:myspace_design_system/utils/helpers/theme.dart';
 
-class CheckboxComponent extends FormFieldComponent<bool> {
+class CheckboxComponent extends FormField<bool> {
   CheckboxComponent({
     super.key,
     this.onChanged,
@@ -67,7 +67,7 @@ class CheckboxComponent extends FormFieldComponent<bool> {
   FormFieldState<bool> createState() => _CheckboxComponentState();
 }
 
-class _CheckboxComponentState extends FormFieldComponentState<bool> {
+class _CheckboxComponentState extends FormFieldState<bool> {
   @override
   void initState() {
     super.initState();

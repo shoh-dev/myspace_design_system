@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myspace_design_system/myspace_design_system.dart';
 import 'package:myspace_design_system/utils/helpers/theme.dart';
 
-class FormFieldErrorText extends Component {
+class FormFieldErrorText extends StatelessWidget {
   const FormFieldErrorText(
     this.errorText, {
     super.key,

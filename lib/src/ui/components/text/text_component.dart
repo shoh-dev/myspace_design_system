@@ -1,11 +1,11 @@
-import 'package:myspace_design_system/src/ui/components/component/component.dart';
+import 'package:flutter/material.dart';
 
 import 'types/hardcoded.dart';
 import 'types/any.dart';
 import 'types/currency.dart';
 import 'types/number.dart';
 
-abstract class TextComponent extends Component {
+abstract class TextComponent extends StatelessWidget {
   const TextComponent({super.key});
 
   factory TextComponent.hardCoded(String text, {bool ignoreLog}) =

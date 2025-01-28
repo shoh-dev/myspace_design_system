@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myspace_design_system/myspace_design_system.dart';
 
-class PopupMenuButtonComponent<T> extends Component {
+class PopupMenuButtonComponent<T> extends StatelessWidget {
   const PopupMenuButtonComponent({
     super.key,
     required this.items,

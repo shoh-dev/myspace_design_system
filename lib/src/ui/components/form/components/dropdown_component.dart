@@ -2,12 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:myspace_design_system/src/ui/components/buttons/button_component.dart';
-import 'package:myspace_design_system/src/ui/components/component/component.dart';
 import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/layout/layout.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 
-class DropdownComponent<T> extends FormFieldComponent<DropdownItem<T>> {
+class DropdownComponent<T> extends FormField<DropdownItem<T>> {
   DropdownComponent({
     super.key,
     super.initialValue,
@@ -42,8 +41,7 @@ class DropdownComponent<T> extends FormFieldComponent<DropdownItem<T>> {
   FormFieldState<DropdownItem<T>> createState() => _DropdownComponentState<T>();
 }
 
-class _DropdownComponentState<T>
-    extends FormFieldComponentState<DropdownItem<T>> {
+class _DropdownComponentState<T> extends FormFieldState<DropdownItem<T>> {
   @override
   void initState() {
     super.initState();

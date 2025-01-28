@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
-@UseCase(name: 'Text Field Component', type: FormFieldComponent)
+@UseCase(name: 'Text Field Component', type: FormField)
 Widget buildTextField(BuildContext context) {
   return TextFieldComponent(
     initialValue:
@@ -16,7 +16,7 @@ Widget buildTextField(BuildContext context) {
   );
 }
 
-@UseCase(name: 'Checkbox Component', type: FormFieldComponent)
+@UseCase(name: 'Checkbox Component', type: FormField)
 Widget buildCheckbox(BuildContext context) {
   return CheckboxComponent(
     label: context.knobs.string(label: "Label", initialValue: "Check me"),
@@ -27,7 +27,7 @@ Widget buildCheckbox(BuildContext context) {
   );
 }
 
-@UseCase(name: 'Dropdown Component', type: FormFieldComponent)
+@UseCase(name: 'Dropdown Component', type: FormField)
 Widget buildDropdown(BuildContext context) {
   return DropdownComponent<String>(
     enabled: context.knobs.boolean(label: "Enabled", initialValue: true),

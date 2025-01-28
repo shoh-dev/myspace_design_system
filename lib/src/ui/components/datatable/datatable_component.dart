@@ -7,7 +7,7 @@ export 'models/cell.dart';
 export 'models/row.dart';
 export 'models/column.dart';
 
-class DatatableComponent extends Component {
+class DatatableComponent extends StatelessWidget {
   const DatatableComponent({
     super.key,
     required this.columns,

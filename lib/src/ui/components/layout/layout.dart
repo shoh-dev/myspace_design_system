@@ -1,11 +1,10 @@
-import 'package:myspace_design_system/src/ui/components/component/component.dart';
 import 'package:flutter/material.dart';
 
 import 'types/column.dart';
 import 'types/row.dart';
 import 'types/stack.dart';
 
-abstract class LayoutComponent extends Component {
+abstract class LayoutComponent extends StatelessWidget {
   const LayoutComponent({
     super.key,
     required this.children,

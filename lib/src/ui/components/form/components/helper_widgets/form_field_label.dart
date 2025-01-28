@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myspace_design_system/myspace_design_system.dart';
 import 'package:myspace_design_system/utils/helpers/theme.dart';
 
-class FormFieldLabel extends Component {
+class FormFieldLabel extends StatelessWidget {
   const FormFieldLabel(
     this.label, {
     super.key,

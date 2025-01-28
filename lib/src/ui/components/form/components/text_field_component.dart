@@ -5,7 +5,7 @@ import 'package:myspace_design_system/myspace_design_system.dart';
 import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 
-class TextFieldComponent extends FormFieldComponent<String> {
+class TextFieldComponent extends FormField<String> {
   TextFieldComponent({
     super.key,
     super.initialValue,
@@ -17,9 +17,11 @@ class TextFieldComponent extends FormFieldComponent<String> {
     String? label,
     bool canClear = false,
     int? maxLines,
+    TextEditingController? controller,
   }) : super(
           builder: (field) {
             return _Field(
+              controller: controller,
               field: field,
               onChanged: onChanged,
               hintText: hintText,
@@ -38,7 +40,7 @@ class TextFieldComponent extends FormFieldComponent<String> {
   FormFieldState<String> createState() => _FieldComponentState();
 }
 
-class _FieldComponentState extends FormFieldComponentState<String> {
+class _FieldComponentState extends FormFieldState<String> {
   @override
   void initState() {
     super.initState();
@@ -58,6 +60,7 @@ class _Field extends StatefulWidget {
     this.validator,
     this.onSaved,
     this.maxLines,
+    this.controller,
   });
 
   final FormFieldState<String> field;
@@ -70,6 +73,7 @@ class _Field extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onSaved;
   final int? maxLines;
+  final TextEditingController? controller;
 
   @override
   State<_Field> createState() => __FieldState();
@@ -77,7 +81,7 @@ class _Field extends StatefulWidget {
 
 class __FieldState extends State<_Field> {
   FormFieldState<String> get field => widget.field;
-  final TextEditingController _controller = TextEditingController();
+  late final TextEditingController _controller;
 
   @override
   void dispose() {
@@ -92,6 +96,7 @@ class __FieldState extends State<_Field> {
 
   @override
   void initState() {
+    _controller = widget.controller ?? TextEditingController();
     _controller.text = widget.initialValue ?? "";
     _controller.addListener(() {
       field.didChange(_controller.text);
