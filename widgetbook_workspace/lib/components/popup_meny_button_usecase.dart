@@ -6,7 +6,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 Widget buildPopupMenuButton(BuildContext context) {
   return PopupMenuButtonComponent<String>(
     onSelected: (value) {
-      print(value?.value);
+      debugPrint(value?.value);
     },
     items: [
       DropdownItem(value: 'Item 1', label: 'Item 1'),

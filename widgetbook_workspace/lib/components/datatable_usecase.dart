@@ -29,7 +29,8 @@ const List<MyModel> models = [
 Widget buildDatatable(BuildContext context) {
   return DatatableComponent(
     onRowActionPressed: (row, value) {
-      print('Row action pressed for ${row.cells} with value ${value?.value}');
+      debugPrint(
+          'Row action pressed for ${row.cells} with value ${value.value}');
     },
     rowActions: [
       DropdownItem<String>(value: 'edit', label: 'Edit'),
