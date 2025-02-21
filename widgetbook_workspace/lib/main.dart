@@ -44,15 +44,13 @@ class _DeviceFramePainter extends CustomPainter {
 }
 
 class _WidgetbookAppState extends State<WidgetbookApp> {
-  final fCodeTheme = FCodeTheme();
+  final fCodeTheme = AppTheme();
 
   final frames = [
     Devices.ios.iPhone13Mini,
     Devices.ios.iPhone13,
     Devices.ios.iPhone13ProMax,
-  ]
-      .map((device) => device.copyWith(framePainter: _DeviceFramePainter()))
-      .toList();
+  ].map((device) => device.copyWith(framePainter: _DeviceFramePainter())).toList();
 
   late final themes = [
     WidgetbookTheme(name: "Light", data: fCodeTheme.lightTheme),
@@ -66,12 +64,7 @@ class _WidgetbookAppState extends State<WidgetbookApp> {
       // "/ui/components/datatable/datatablecomponent/datatable-component",
       directories: directories,
       addons: [
-        MaterialThemeAddon(
-            initialTheme:
-                MediaQuery.of(context).platformBrightness == Brightness.light
-                    ? themes[0]
-                    : themes[1],
-            themes: themes),
+        MaterialThemeAddon(initialTheme: MediaQuery.of(context).platformBrightness == Brightness.light ? themes[0] : themes[1], themes: themes),
         DeviceFrameAddon(devices: frames),
         AlignmentAddon(initialAlignment: Alignment.center),
       ],

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
-class FCodeTheme {
+class AppTheme {
   //singleton instance
-  static final FCodeTheme _instance = FCodeTheme._internal();
+  static final AppTheme _instance = AppTheme._internal();
 
-  factory FCodeTheme() {
+  factory AppTheme() {
     return _instance;
   }
 
-  FCodeTheme._internal();
+  AppTheme._internal();
 
-  final _colorSchemeLight = ColorScheme.fromSeed(
-      seedColor: Colors.blue, brightness: Brightness.light);
-  final _colorSchemeDark =
-      ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark);
+  final _colorSchemeLight = ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.light);
+  final _colorSchemeDark = ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark);
 
   final _textThemeLight = ThemeData.light().textTheme;
   final _textThemeDark = ThemeData.dark().textTheme;
