@@ -18,6 +18,7 @@ class TextFieldComponent extends FormField<String> {
     bool canClear = false,
     int? maxLines,
     TextEditingController? controller,
+    List<Widget> suffixWidgets = const [],
   }) : super(
           builder: (field) {
             return _Field(
@@ -32,6 +33,7 @@ class TextFieldComponent extends FormField<String> {
               validator: validator,
               onSaved: onSaved,
               maxLines: maxLines,
+              suffixWidgets: suffixWidgets,
             );
           },
         );
@@ -61,6 +63,7 @@ class _Field extends StatefulWidget {
     this.onSaved,
     this.maxLines,
     this.controller,
+    this.suffixWidgets = const [],
   });
 
   final FormFieldState<String> field;
@@ -74,6 +77,7 @@ class _Field extends StatefulWidget {
   final ValueChanged<String>? onSaved;
   final int? maxLines;
   final TextEditingController? controller;
+  final List<Widget> suffixWidgets;
 
   @override
   State<_Field> createState() => __FieldState();
@@ -85,7 +89,7 @@ class __FieldState extends State<_Field> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (widget.controller == null) _controller.dispose();
     log('_Field dispose');
     super.dispose();
   }
@@ -130,15 +134,40 @@ class __FieldState extends State<_Field> {
             onChanged: widget.onChanged,
             decoration: InputDecoration(
               hintText: widget.hintText,
-              suffixIcon: canShowResetButton
-                  ? Transform.scale(
-                      scale: .6,
-                      child: ButtonComponent.iconOutlined(
-                        icon: Icons.clear_rounded,
-                        onPressed: () => reset(field.context),
-                      ),
-                    )
-                  : null,
+              suffixIcon: !widget.enabled
+                  ? null
+                  : canShowResetButton
+                      ? Transform.scale(
+                          scale: .8,
+                          alignment: Alignment.centerRight,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            spacing: 8,
+                            children: [
+                              if (widget.suffixWidgets.isNotEmpty)
+                                for (var icon in widget.suffixWidgets) icon,
+                              ButtonComponent.iconOutlined(
+                                icon: Icons.clear_rounded,
+                                onPressed: () => reset(field.context),
+                              ),
+                              const SizedBox(width: 1),
+                            ],
+                          ),
+                        )
+                      : widget.suffixWidgets.isNotEmpty
+                          ? Transform.scale(
+                              scale: .8,
+                              alignment: Alignment.centerRight,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                spacing: 8,
+                                children: [
+                                  for (var icon in widget.suffixWidgets) icon,
+                                  const SizedBox(width: 1),
+                                ],
+                              ),
+                            )
+                          : null,
             ),
             enabled: widget.enabled,
           ),
