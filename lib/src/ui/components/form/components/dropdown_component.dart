@@ -111,6 +111,7 @@ class __MenuState<T> extends State<_Menu<T>> {
                 DropdownMenuEntry(
                   value: item,
                   label: item.label,
+                  enabled: item.enabled,
                   leadingIcon: item.label == field.value?.label
                       ? const Icon(Icons.check)
                       : null,
@@ -162,19 +163,24 @@ class __MenuState<T> extends State<_Menu<T>> {
 class DropdownItem<T> {
   final T value;
   final String label;
+  final bool enabled;
 
   DropdownItem({
     required this.value,
     required this.label,
+    this.enabled = true,
   });
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is DropdownItem<T> && other.label == label;
+    return other is DropdownItem<T> &&
+        other.label == label &&
+        other.enabled == enabled &&
+        other.value == value;
   }
 
   @override
-  int get hashCode => label.hashCode;
+  int get hashCode => label.hashCode ^ enabled.hashCode ^ value.hashCode;
 }

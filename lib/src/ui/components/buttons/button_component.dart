@@ -34,6 +34,7 @@ abstract class ButtonComponent extends StatelessWidget {
   const factory ButtonComponent.icon({
     VoidCallback? onPressed,
     required IconData icon,
+    String? tooltip,
   }) = IconButtonComponent;
 
   const factory ButtonComponent.destructive({
@@ -45,10 +46,12 @@ abstract class ButtonComponent extends StatelessWidget {
   const factory ButtonComponent.iconOutlined({
     VoidCallback? onPressed,
     required IconData icon,
+    String? tooltip,
   }) = IconButtonComponentOutlined;
 
   const factory ButtonComponent.iconDesctructive({
     VoidCallback? onPressed,
     required IconData icon,
+    String? tooltip,
   }) = IconButtonComponentDesctructive;
 }

@@ -46,7 +46,9 @@ class _FieldComponentState extends FormFieldState<String> {
   @override
   void initState() {
     super.initState();
-    if (widget.initialValue != null) setValue(widget.initialValue);
+    if (widget.initialValue != null) {
+      setValue(widget.initialValue);
+    }
   }
 }
 

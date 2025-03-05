@@ -14,12 +14,17 @@ class IconButtonComponent extends ButtonComponent {
     super.key,
     super.onPressed,
     required IconData icon,
-  }) : super(icon: icon);
+    String? tooltip,
+  }) : super(
+          icon: icon,
+          text: tooltip,
+        );
 
   @override
   Widget build(BuildContext context) {
     return _disabled(
       IconButton(
+        tooltip: text,
         onPressed: onPressed,
         icon: Icon(icon!),
         style: IconButton.styleFrom(
@@ -39,12 +44,17 @@ class IconButtonComponentDesctructive extends ButtonComponent {
     super.key,
     super.onPressed,
     required IconData icon,
-  }) : super(icon: icon);
+    String? tooltip,
+  }) : super(
+          icon: icon,
+          text: tooltip,
+        );
 
   @override
   Widget build(BuildContext context) {
     return _disabled(
       IconButton(
+        tooltip: text,
         onPressed: onPressed,
         icon: Icon(icon!),
         style: IconButton.styleFrom(
@@ -66,12 +76,17 @@ class IconButtonComponentOutlined extends ButtonComponent {
     super.key,
     super.onPressed,
     required IconData icon,
-  }) : super(icon: icon);
+    String? tooltip,
+  }) : super(
+          icon: icon,
+          text: tooltip,
+        );
 
   @override
   Widget build(BuildContext context) {
     return _disabled(
       IconButton(
+        tooltip: text,
         onPressed: onPressed,
         icon: Icon(icon!),
         isSelected: true,
