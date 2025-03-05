@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myspace_design_system/utils/helpers/theme.dart';
+import 'package:myspace_design_system/src/utils/helpers/theme.dart';
 
 class FormFieldLabel extends StatelessWidget {
   const FormFieldLabel(

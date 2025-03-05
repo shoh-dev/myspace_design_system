@@ -3,7 +3,6 @@ import 'package:myspace_design_system/myspace_design_system.dart';
 import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_error_text.dart';
 import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
-import 'package:myspace_design_system/utils/helpers/theme.dart';
 
 class CheckboxComponent extends FormField<bool> {
   CheckboxComponent({

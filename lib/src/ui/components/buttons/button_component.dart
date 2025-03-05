@@ -46,4 +46,9 @@ abstract class ButtonComponent extends StatelessWidget {
     VoidCallback? onPressed,
     required IconData icon,
   }) = IconButtonComponentOutlined;
+
+  const factory ButtonComponent.iconDesctructive({
+    VoidCallback? onPressed,
+    required IconData icon,
+  }) = IconButtonComponentDesctructive;
 }

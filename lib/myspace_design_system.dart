@@ -14,6 +14,6 @@ export 'src/ui/theme/app_theme.dart';
 
 export 'src/ui/overlay/wrapper.dart';
 
-export 'utils/helpers/context.dart';
-export 'utils/helpers/theme.dart';
-export 'utils/helpers/state_mixin.dart';
+export 'src/utils/helpers/context.dart';
+export 'src/utils/helpers/theme.dart';
+export 'src/utils/helpers/state_mixin.dart';

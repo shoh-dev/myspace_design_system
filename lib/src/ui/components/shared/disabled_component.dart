@@ -1,4 +1,4 @@
-import 'package:myspace_design_system/utils/helpers/context.dart';
+import 'package:myspace_design_system/src/utils/helpers/context.dart';
 import 'package:flutter/material.dart';
 
 class DisabledComponent extends StatelessWidget {

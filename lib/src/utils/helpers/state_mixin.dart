@@ -20,4 +20,10 @@ mixin StateHelpers<T extends StatefulWidget> on State<T> {
       fn();
     }
   }
+
+  void safeDidUpdateWidget(VoidCallback fn) {
+    if (mounted) {
+      fn();
+    }
+  }
 }

@@ -1,7 +1,5 @@
 import 'package:myspace_design_system/myspace_design_system.dart';
 import 'package:flutter/material.dart';
-import 'package:myspace_design_system/utils/helpers/context.dart';
-import 'package:myspace_design_system/utils/helpers/theme.dart';
 
 export 'models/cell.dart';
 export 'models/row.dart';
@@ -18,7 +16,8 @@ class DatatableComponent extends StatelessWidget {
 
   final List<ColumnDef> columns;
   final List<RowDef> rows;
-  final void Function(RowDef row, DropdownItem<String> value)? onRowActionPressed;
+  final void Function(RowDef row, DropdownItem<String> value)?
+      onRowActionPressed;
   final Iterable<DropdownItem<String>> rowActions;
 
   @override
@@ -30,7 +29,9 @@ class DatatableComponent extends StatelessWidget {
         right: BorderSide(color: context.colorScheme.outline),
         horizontalInside: BorderSide(color: context.colorScheme.outline),
         verticalInside: BorderSide(color: context.colorScheme.outline),
-        top: BorderSide(color: context.colorScheme.outline), //comment this if the above DataTable is uncommented
+        top: BorderSide(
+            color: context.colorScheme
+                .outline), //comment this if the above DataTable is uncommented
       ),
       decoration: BoxDecoration(
         color: context.colorScheme.surfaceContainer,
