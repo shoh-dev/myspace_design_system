@@ -112,7 +112,7 @@ class __MenuState<T> extends State<_Menu<T>> {
                   value: item,
                   label: item.label,
                   enabled: item.enabled,
-                  leadingIcon: item.label == field.value?.label
+                  trailingIcon: item.value == field.value?.value
                       ? const Icon(Icons.check)
                       : null,
                 ),
@@ -175,12 +175,9 @@ class DropdownItem<T> {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is DropdownItem<T> &&
-        other.label == label &&
-        other.enabled == enabled &&
-        other.value == value;
+    return other is DropdownItem<T> && other.value == value;
   }
 
   @override
-  int get hashCode => label.hashCode ^ enabled.hashCode ^ value.hashCode;
+  int get hashCode => value.hashCode;
 }

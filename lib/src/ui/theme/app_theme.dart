@@ -10,8 +10,10 @@ class AppTheme {
 
   AppTheme._internal();
 
-  final _colorSchemeLight = ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.light);
-  final _colorSchemeDark = ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark);
+  final _colorSchemeLight = ColorScheme.fromSeed(
+      seedColor: Colors.blue, brightness: Brightness.light);
+  final _colorSchemeDark =
+      ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark);
 
   final _textThemeLight = ThemeData.light().textTheme;
   final _textThemeDark = ThemeData.dark().textTheme;
@@ -194,10 +196,17 @@ class AppTheme {
 
   late final _dropdownMenuThemeDataLight = DropdownMenuThemeData(
     inputDecorationTheme: _textFieldThemeDataLight,
+    menuStyle: MenuStyle(
+      side:
+          WidgetStatePropertyAll(BorderSide(color: _colorSchemeLight.outline)),
+    ),
   );
 
   late final _dropdownMenuThemeDataDark = DropdownMenuThemeData(
     inputDecorationTheme: _textFieldThemeDataDark,
+    menuStyle: MenuStyle(
+      side: WidgetStatePropertyAll(BorderSide(color: _colorSchemeDark.outline)),
+    ),
   );
 
   // Dropdown Menu Theme Data End
