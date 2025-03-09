@@ -13,13 +13,17 @@ class DropdownComponent<T> extends FormField<DropdownItem<T>> {
     super.validator,
     super.onSaved,
     super.enabled,
+    super.autovalidateMode,
     required Iterable<DropdownItem<T>> items,
-    ValueChanged<DropdownItem<T>?>? onChanged,
+    void Function(DropdownItem<T>? value, TextEditingController controller)?
+        onChanged,
     String? hintText,
     String? label,
     bool canUnselect = false,
   }) : super(
           builder: (field) {
+            field.didChange(initialValue);
+            field.validate();
             return _Menu<T>(
               field: field,
               onChanged: onChanged,
@@ -63,7 +67,8 @@ class _Menu<T> extends StatefulWidget {
   });
 
   final FormFieldState<DropdownItem<T>> field;
-  final ValueChanged<DropdownItem<T>?>? onChanged;
+  final void Function(DropdownItem<T>? value, TextEditingController controller)?
+      onChanged;
   final String? hintText;
   final String? label;
   final bool canUnselect;
@@ -87,8 +92,19 @@ class __MenuState<T> extends State<_Menu<T>> {
   }
 
   bool get canShowResetButton {
-    if (widget.initialValue == field.value) return false;
+    // if (widget.initialValue == field.value) return false;
     return widget.canUnselect && field.value != null && widget.enabled;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.initialValue != null) {
+        field.didChange(widget.initialValue);
+      }
+      field.validate();
+    });
   }
 
   @override
@@ -111,6 +127,12 @@ class __MenuState<T> extends State<_Menu<T>> {
                 DropdownMenuEntry(
                   value: item,
                   label: item.label,
+                  leadingIcon: item.icon != null
+                      ? Icon(
+                          item.icon,
+                          size: 18,
+                        )
+                      : null,
                   enabled: item.enabled,
                   trailingIcon: item.value == field.value?.value
                       ? const Icon(Icons.check)
@@ -144,7 +166,7 @@ class __MenuState<T> extends State<_Menu<T>> {
             expandedInsets: EdgeInsets.zero,
             onSelected: (value) {
               field.didChange(value);
-              widget.onChanged?.call(value);
+              widget.onChanged?.call(value, _controller);
             },
           ),
         ],
@@ -154,7 +176,7 @@ class __MenuState<T> extends State<_Menu<T>> {
 
   void reset(BuildContext context) {
     field.reset();
-    widget.onChanged?.call(null);
+    widget.onChanged?.call(null, _controller);
     _controller.clear();
     FocusScope.of(context).unfocus();
   }
@@ -164,11 +186,13 @@ class DropdownItem<T> {
   final T value;
   final String label;
   final bool enabled;
+  final IconData? icon;
 
   DropdownItem({
     required this.value,
     required this.label,
     this.enabled = true,
+    this.icon,
   });
 
   @override

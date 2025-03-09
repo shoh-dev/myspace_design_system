@@ -12,6 +12,7 @@ class TextFieldComponent extends FormField<String> {
     super.enabled,
     super.validator,
     super.onSaved,
+    super.autovalidateMode,
     ValueChanged<String>? onChanged,
     String? hintText,
     String? label,
@@ -19,6 +20,7 @@ class TextFieldComponent extends FormField<String> {
     int? maxLines,
     TextEditingController? controller,
     List<Widget> suffixWidgets = const [],
+    bool autoFocus = false,
   }) : super(
           builder: (field) {
             return _Field(
@@ -34,6 +36,7 @@ class TextFieldComponent extends FormField<String> {
               onSaved: onSaved,
               maxLines: maxLines,
               suffixWidgets: suffixWidgets,
+              autofocus: autoFocus,
             );
           },
         );
@@ -66,6 +69,7 @@ class _Field extends StatefulWidget {
     this.maxLines,
     this.controller,
     this.suffixWidgets = const [],
+    required this.autofocus,
   });
 
   final FormFieldState<String> field;
@@ -80,6 +84,7 @@ class _Field extends StatefulWidget {
   final int? maxLines;
   final TextEditingController? controller;
   final List<Widget> suffixWidgets;
+  final bool autofocus;
 
   @override
   State<_Field> createState() => __FieldState();
@@ -130,11 +135,13 @@ class __FieldState extends State<_Field> {
               hasError: field.hasError,
             ),
           TextFormField(
+            autofocus: widget.autofocus,
             controller: _controller,
             maxLines: widget.maxLines,
             validator: widget.validator,
             onChanged: widget.onChanged,
             decoration: InputDecoration(
+              errorText: field.errorText,
               hintText: widget.hintText,
               suffixIcon: !widget.enabled
                   ? null
