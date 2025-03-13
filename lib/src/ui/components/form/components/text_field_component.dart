@@ -19,7 +19,7 @@ class TextFieldComponent extends FormField<String> {
     bool canClear = false,
     int? maxLines,
     TextEditingController? controller,
-    List<Widget> suffixWidgets = const [],
+    List<Widget> Function(String query)? suffixWidgets,
     bool autoFocus = false,
   }) : super(
           builder: (field) {
@@ -68,7 +68,7 @@ class _Field extends StatefulWidget {
     this.onSaved,
     this.maxLines,
     this.controller,
-    this.suffixWidgets = const [],
+    this.suffixWidgets,
     required this.autofocus,
   });
 
@@ -83,7 +83,7 @@ class _Field extends StatefulWidget {
   final ValueChanged<String>? onSaved;
   final int? maxLines;
   final TextEditingController? controller;
-  final List<Widget> suffixWidgets;
+  final List<Widget> Function(String query)? suffixWidgets;
   final bool autofocus;
 
   @override
@@ -153,8 +153,10 @@ class __FieldState extends State<_Field> {
                             mainAxisSize: MainAxisSize.min,
                             spacing: 8,
                             children: [
-                              if (widget.suffixWidgets.isNotEmpty)
-                                for (var icon in widget.suffixWidgets) icon,
+                              if (widget.suffixWidgets != null)
+                                for (var icon
+                                    in widget.suffixWidgets!(_controller.text))
+                                  icon,
                               ButtonComponent.iconOutlined(
                                 icon: Icons.clear_rounded,
                                 onPressed: () => reset(field.context),
@@ -163,7 +165,7 @@ class __FieldState extends State<_Field> {
                             ],
                           ),
                         )
-                      : widget.suffixWidgets.isNotEmpty
+                      : widget.suffixWidgets != null
                           ? Transform.scale(
                               scale: .8,
                               alignment: Alignment.centerRight,
@@ -171,7 +173,9 @@ class __FieldState extends State<_Field> {
                                 mainAxisSize: MainAxisSize.min,
                                 spacing: 8,
                                 children: [
-                                  for (var icon in widget.suffixWidgets) icon,
+                                  for (var icon in widget
+                                      .suffixWidgets!(_controller.text))
+                                    icon,
                                   const SizedBox(width: 1),
                                 ],
                               ),

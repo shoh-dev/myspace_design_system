@@ -1,35 +1,47 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  //singleton instance
-  static final AppTheme _instance = AppTheme._internal();
+  final double? borderRadius;
+  final Color? seedDark;
+  final Color? surfaceDark;
+  final Color? scaffoldBackgroundColorDark;
 
-  factory AppTheme() {
-    return _instance;
-  }
+  AppTheme({
+    this.borderRadius,
+    this.surfaceDark,
+    this.seedDark,
+    this.scaffoldBackgroundColorDark,
+  });
 
-  AppTheme._internal();
-
-  final _colorSchemeLight = ColorScheme.fromSeed(
-      seedColor: Colors.blue, brightness: Brightness.light);
-  final _colorSchemeDark =
-      ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark);
+  late final _colorSchemeLight = ColorScheme.fromSeed(
+    seedColor: Colors.blue,
+    brightness: Brightness.light,
+  );
+  late final _colorSchemeDark = ColorScheme.fromSeed(
+    seedColor: seedDark ?? Colors.blue,
+    brightness: Brightness.dark,
+    surface: surfaceDark,
+  );
 
   final _textThemeLight = ThemeData.light().textTheme;
   final _textThemeDark = ThemeData.dark().textTheme;
 
-  final _noBorder = const RoundedRectangleBorder();
+  late final _border = RoundedRectangleBorder(
+    borderRadius: borderRadius != null
+        ? BorderRadius.circular(borderRadius!)
+        : BorderRadius.zero,
+  );
 
   // Filled Button Theme Data
 
   late final _filledButtonThemeDataLight = FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
     ),
   );
   late final _filledButtonThemeDataDark = FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
     ),
   );
 
@@ -39,12 +51,12 @@ class AppTheme {
 
   late final _outlinedButtonThemeDataLight = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
     ),
   );
   late final _outlinedButtonThemeDataDark = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
     ),
   );
 
@@ -54,12 +66,12 @@ class AppTheme {
 
   late final _textButtonThemeDataLight = TextButtonThemeData(
     style: TextButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
     ),
   );
   late final _textButtonThemeDataDark = TextButtonThemeData(
     style: TextButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
     ),
   );
 
@@ -69,14 +81,14 @@ class AppTheme {
 
   late final _iconButtonThemeDataLight = IconButtonThemeData(
     style: IconButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
       backgroundColor: _colorSchemeLight.primary,
       foregroundColor: _colorSchemeLight.onPrimary,
     ),
   );
   late final _iconButtonThemeDataDark = IconButtonThemeData(
     style: IconButton.styleFrom(
-      shape: _noBorder,
+      shape: _border,
       backgroundColor: _colorSchemeDark.primary,
       foregroundColor: _colorSchemeDark.onPrimary,
     ),
@@ -102,35 +114,35 @@ class AppTheme {
         color: _colorSchemeLight.primary,
         width: 1.5,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     errorBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeLight.error,
         width: 1,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeLight.error,
         width: 1,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeLight.outline,
         width: 1,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
-    disabledBorder: const OutlineInputBorder(
-      borderSide: BorderSide(
+    disabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
         color: Colors.transparent,
         width: 0,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
   );
 
@@ -141,44 +153,44 @@ class AppTheme {
       fontSize: 14,
       color: _colorSchemeDark.onSurface.withValues(alpha: 0.38),
     ),
-    border: const OutlineInputBorder(
+    border: OutlineInputBorder(
       borderSide: BorderSide.none,
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeDark.primary,
         width: 1.5,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     errorBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeDark.error,
         width: 1,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeDark.error,
         width: 1,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: _colorSchemeDark.outline,
         width: 1,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
-    disabledBorder: const OutlineInputBorder(
-      borderSide: BorderSide(
+    disabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
         color: Colors.transparent,
         width: 0,
       ),
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
   );
 
@@ -214,21 +226,31 @@ class AppTheme {
   // Popup Menu  Theme Data Start
 
   late final _popupMenuThemeDataLight = PopupMenuThemeData(
-    shape: _noBorder,
+    shape: _border,
     position: PopupMenuPosition.under,
     elevation: 4,
   );
 
   late final _popupMenuThemeDataDark = PopupMenuThemeData(
-    shape: _noBorder,
+    shape: _border,
     position: PopupMenuPosition.under,
     elevation: 4,
   );
 
   // Popup Menu Theme Data End
 
+  // Card Theme Data Start
+
+  late final _cardThemeDataDark = CardThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: _border.borderRadius / 4,
+    ),
+  );
+
+  // Card Theme Data End
+
   late final ThemeData lightTheme = ThemeData.light().copyWith(
-    scaffoldBackgroundColor: Colors.grey.shade300,
+    scaffoldBackgroundColor: _colorSchemeLight.surface,
     colorScheme: _colorSchemeLight,
     textTheme: _textThemeLight,
     filledButtonTheme: _filledButtonThemeDataLight,
@@ -242,7 +264,7 @@ class AppTheme {
   );
 
   late final ThemeData darkTheme = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: Colors.grey.shade900,
+    scaffoldBackgroundColor: _colorSchemeDark.surface,
     colorScheme: _colorSchemeDark,
     textTheme: _textThemeDark,
     filledButtonTheme: _filledButtonThemeDataDark,
@@ -253,5 +275,6 @@ class AppTheme {
     // menuTheme: _menuThemeDataDark,
     dropdownMenuTheme: _dropdownMenuThemeDataDark,
     popupMenuTheme: _popupMenuThemeDataDark,
+    cardTheme: _cardThemeDataDark,
   );
 }
