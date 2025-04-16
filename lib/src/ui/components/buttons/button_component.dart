@@ -6,12 +6,35 @@ import 'types/primary.dart';
 import 'types/text.dart';
 import 'types/destructive.dart';
 
+extension ButtonComponentHelper on ButtonComponent {
+  Widget expanded() => SizedBox(width: double.infinity, child: this);
+}
+
 abstract class ButtonComponent extends StatelessWidget {
-  const ButtonComponent({super.key, this.onPressed, this.text, this.icon});
+  const ButtonComponent({
+    super.key,
+    this.onPressed,
+    this.text,
+    this.icon,
+    this.backgroundColor,
+    this.fontSize,
+    this.foregroundColor,
+    this.iconSize,
+    this.padding,
+    this.elevation,
+    this.shadowColor,
+  });
 
   final VoidCallback? onPressed;
   final String? text;
   final IconData? icon;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final Color? shadowColor;
+  final double? iconSize;
+  final double? fontSize;
+  final EdgeInsets? padding;
+  final double? elevation;
 
   const factory ButtonComponent.outlined({
     VoidCallback? onPressed,
@@ -35,6 +58,12 @@ abstract class ButtonComponent extends StatelessWidget {
     VoidCallback? onPressed,
     required IconData icon,
     String? tooltip,
+    Color? backgroundColor,
+    Color? foregroundColor,
+    Color? shadowColor,
+    double? iconSize,
+    EdgeInsets? padding,
+    double? elevation,
   }) = IconButtonComponent;
 
   const factory ButtonComponent.destructive({

@@ -32,4 +32,10 @@ extension ThemeHelpers on BuildContext {
 
   //width
   double get width => size.width;
+
+  //border radius
+  BorderRadius get borderRadius =>
+      (theme.cardTheme.shape as RoundedRectangleBorder?)?.borderRadius
+          as BorderRadius? ??
+      const BorderRadius.all(Radius.zero);
 }

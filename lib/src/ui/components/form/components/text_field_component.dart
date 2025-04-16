@@ -143,6 +143,9 @@ class __FieldState extends State<_Field> {
             decoration: InputDecoration(
               errorText: field.errorText,
               hintText: widget.hintText,
+              // labelText: widget.label,
+              // floatingLabelBehavior: FloatingLabelBehavior.auto,
+              // labelStyle: context.textTheme.bodyLarge,
               suffixIcon: !widget.enabled
                   ? null
                   : canShowResetButton

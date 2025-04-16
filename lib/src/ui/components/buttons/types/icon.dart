@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 
 Widget _disabled(Widget child, VoidCallback? onPressed) {
-  return DisabledComponent(
-    isDisabled: onPressed == null,
-    child: child,
-  );
+  return DisabledComponent(isDisabled: onPressed == null, child: child);
 }
 
 class IconButtonComponent extends ButtonComponent {
   const IconButtonComponent({
+    required IconData super.icon,
+    String? tooltip,
     super.key,
     super.onPressed,
-    required IconData icon,
-    String? tooltip,
-  }) : super(
-          icon: icon,
-          text: tooltip,
-        );
+    super.backgroundColor,
+    super.foregroundColor,
+    super.iconSize,
+    super.padding,
+    super.elevation,
+    super.shadowColor,
+  }) : super(text: tooltip);
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,17 @@ class IconButtonComponent extends ButtonComponent {
         onPressed: onPressed,
         icon: Icon(icon!),
         style: IconButton.styleFrom(
-          disabledBackgroundColor:
-              context.colorScheme.primaryContainer.withValues(alpha: 0.3),
-          disabledForegroundColor:
-              context.colorScheme.onSurface.withValues(alpha: 0.3),
+          iconSize: iconSize,
+          padding: padding ?? const EdgeInsets.all(4),
+          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
+          elevation: elevation,
+          shadowColor: shadowColor,
+          disabledBackgroundColor: context.colorScheme.primaryContainer
+              .withValues(alpha: 0.3),
+          disabledForegroundColor: context.colorScheme.onSurface.withValues(
+            alpha: 0.3,
+          ),
         ),
       ),
       onPressed,
@@ -41,14 +48,12 @@ class IconButtonComponent extends ButtonComponent {
 
 class IconButtonComponentDesctructive extends ButtonComponent {
   const IconButtonComponentDesctructive({
+    required IconData super.icon,
+    String? tooltip,
     super.key,
     super.onPressed,
-    required IconData icon,
-    String? tooltip,
-  }) : super(
-          icon: icon,
-          text: tooltip,
-        );
+    super.iconSize,
+  }) : super(text: tooltip);
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +63,15 @@ class IconButtonComponentDesctructive extends ButtonComponent {
         onPressed: onPressed,
         icon: Icon(icon!),
         style: IconButton.styleFrom(
+          iconSize: iconSize,
           backgroundColor: context.colorScheme.error,
           foregroundColor: context.colorScheme.onError,
-          disabledForegroundColor:
-              context.colorScheme.onSurface.withValues(alpha: 0.3),
-          disabledBackgroundColor:
-              context.colorScheme.error.withValues(alpha: 0.1),
+          disabledForegroundColor: context.colorScheme.onSurface.withValues(
+            alpha: 0.3,
+          ),
+          disabledBackgroundColor: context.colorScheme.error.withValues(
+            alpha: 0.1,
+          ),
         ),
       ),
       onPressed,
@@ -73,14 +81,13 @@ class IconButtonComponentDesctructive extends ButtonComponent {
 
 class IconButtonComponentOutlined extends ButtonComponent {
   const IconButtonComponentOutlined({
+    required IconData super.icon,
+    String? tooltip,
     super.key,
     super.onPressed,
-    required IconData icon,
-    String? tooltip,
-  }) : super(
-          icon: icon,
-          text: tooltip,
-        );
+    super.foregroundColor,
+    super.iconSize,
+  }) : super(text: tooltip);
 
   @override
   Widget build(BuildContext context) {
@@ -91,14 +98,18 @@ class IconButtonComponentOutlined extends ButtonComponent {
         icon: Icon(icon!),
         isSelected: true,
         style: IconButton.styleFrom(
+          iconSize: iconSize,
+          padding: const EdgeInsets.all(4),
           backgroundColor: Colors.transparent,
-          foregroundColor: context.colorScheme.onSurface,
-          disabledForegroundColor:
-              context.colorScheme.onSurface.withValues(alpha: 0.3),
+          foregroundColor: foregroundColor ?? context.colorScheme.onSurface,
+          disabledForegroundColor: context.colorScheme.onSurface.withValues(
+            alpha: 0.3,
+          ),
           side: BorderSide(
-            color: onPressed == null
-                ? context.colorScheme.outline.withValues(alpha: 0.3)
-                : context.colorScheme.outline,
+            color:
+                onPressed == null
+                    ? context.colorScheme.outline.withValues(alpha: 0.3)
+                    : context.colorScheme.outline,
           ),
         ),
       ),

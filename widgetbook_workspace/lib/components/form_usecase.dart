@@ -31,8 +31,6 @@ Widget buildCheckbox(BuildContext context) {
 Widget buildDropdown(BuildContext context) {
   return DropdownComponent<String>(
     enabled: context.knobs.boolean(label: "Enabled", initialValue: true),
-    canUnselect:
-        context.knobs.boolean(label: "Can Unselect", initialValue: false),
     items: [
       DropdownItem(value: "1", label: "One"),
       DropdownItem(value: "2", label: "Two"),

@@ -27,22 +27,19 @@ class AppTheme {
   final _textThemeDark = ThemeData.dark().textTheme;
 
   late final _border = RoundedRectangleBorder(
-    borderRadius: borderRadius != null
-        ? BorderRadius.circular(borderRadius!)
-        : BorderRadius.zero,
+    borderRadius:
+        borderRadius != null
+            ? BorderRadius.circular(borderRadius!)
+            : BorderRadius.zero,
   );
 
   // Filled Button Theme Data
 
   late final _filledButtonThemeDataLight = FilledButtonThemeData(
-    style: FilledButton.styleFrom(
-      shape: _border,
-    ),
+    style: FilledButton.styleFrom(shape: _border),
   );
   late final _filledButtonThemeDataDark = FilledButtonThemeData(
-    style: FilledButton.styleFrom(
-      shape: _border,
-    ),
+    style: FilledButton.styleFrom(shape: _border),
   );
 
   // Filled Button Theme Data End
@@ -50,14 +47,10 @@ class AppTheme {
   // Outlined Button Theme Data
 
   late final _outlinedButtonThemeDataLight = OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-      shape: _border,
-    ),
+    style: OutlinedButton.styleFrom(shape: _border),
   );
   late final _outlinedButtonThemeDataDark = OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-      shape: _border,
-    ),
+    style: OutlinedButton.styleFrom(shape: _border),
   );
 
   // Outlined Button Theme Data End
@@ -65,14 +58,10 @@ class AppTheme {
   // Text Button Theme Data
 
   late final _textButtonThemeDataLight = TextButtonThemeData(
-    style: TextButton.styleFrom(
-      shape: _border,
-    ),
+    style: TextButton.styleFrom(shape: _border),
   );
   late final _textButtonThemeDataDark = TextButtonThemeData(
-    style: TextButton.styleFrom(
-      shape: _border,
-    ),
+    style: TextButton.styleFrom(shape: _border),
   );
 
   // Text Button Theme Data End
@@ -100,54 +89,43 @@ class AppTheme {
 
   late final _textFieldThemeDataLight = InputDecorationTheme(
     filled: true,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+    fillColor: _colorSchemeLight.surfaceContainer,
     floatingLabelBehavior: FloatingLabelBehavior.never,
     hintStyle: TextStyle(
       fontSize: 14,
       color: _colorSchemeLight.onSurface.withValues(alpha: 0.38),
     ),
-    border: const OutlineInputBorder(
+    border: OutlineInputBorder(
       borderSide: BorderSide.none,
-      borderRadius: BorderRadius.zero,
+      borderRadius: _border.borderRadius as BorderRadius,
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeLight.primary,
-        width: 1.5,
-      ),
+      borderSide: BorderSide(color: _colorSchemeLight.primary, width: 1.5),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeLight.error,
-        width: 1,
-      ),
+      borderSide: BorderSide(color: _colorSchemeLight.error, width: 1),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeLight.error,
-        width: 1,
-      ),
+      borderSide: BorderSide(color: _colorSchemeLight.error, width: 1),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeLight.outline,
-        width: 1,
-      ),
+      borderSide: BorderSide(color: _colorSchemeLight.outline, width: 1),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     disabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: Colors.transparent,
-        width: 0,
-      ),
+      borderSide: const BorderSide(color: Colors.transparent, width: 0),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
   );
 
   late final _textFieldThemeDataDark = InputDecorationTheme(
     filled: true,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+    fillColor: _colorSchemeDark.surfaceContainer,
     floatingLabelBehavior: FloatingLabelBehavior.never,
     hintStyle: TextStyle(
       fontSize: 14,
@@ -158,38 +136,23 @@ class AppTheme {
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeDark.primary,
-        width: 1.5,
-      ),
+      borderSide: BorderSide(color: _colorSchemeDark.primary, width: 1.5),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeDark.error,
-        width: 1,
-      ),
+      borderSide: BorderSide(color: _colorSchemeDark.error, width: 1),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeDark.error,
-        width: 1,
-      ),
+      borderSide: BorderSide(color: _colorSchemeDark.error, width: 1),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(
-        color: _colorSchemeDark.outline,
-        width: 1,
-      ),
+      borderSide: BorderSide(color: _colorSchemeDark.outline, width: 1),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
     disabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: Colors.transparent,
-        width: 0,
-      ),
+      borderSide: const BorderSide(color: Colors.transparent, width: 0),
       borderRadius: _border.borderRadius as BorderRadius,
     ),
   );
@@ -209,8 +172,9 @@ class AppTheme {
   late final _dropdownMenuThemeDataLight = DropdownMenuThemeData(
     inputDecorationTheme: _textFieldThemeDataLight,
     menuStyle: MenuStyle(
-      side:
-          WidgetStatePropertyAll(BorderSide(color: _colorSchemeLight.outline)),
+      side: WidgetStatePropertyAll(
+        BorderSide(color: _colorSchemeLight.outline),
+      ),
     ),
   );
 
@@ -241,13 +205,47 @@ class AppTheme {
 
   // Card Theme Data Start
 
+  late final _cardThemeDataLight = CardThemeData(
+    shape: RoundedRectangleBorder(borderRadius: _border.borderRadius),
+  );
+
   late final _cardThemeDataDark = CardThemeData(
-    shape: RoundedRectangleBorder(
-      borderRadius: _border.borderRadius / 4,
-    ),
+    shape: RoundedRectangleBorder(borderRadius: _border.borderRadius),
   );
 
   // Card Theme Data End
+
+  // Expansion Panel Theme Data Start
+
+  late final _expansionPanelThemeDataLight = ExpansionTileThemeData(
+    backgroundColor: _colorSchemeLight.surfaceContainerHighest,
+    collapsedBackgroundColor: _colorSchemeLight.surfaceContainerHighest,
+    shape: RoundedRectangleBorder(borderRadius: _border.borderRadius / 2),
+    collapsedShape: RoundedRectangleBorder(borderRadius: _border.borderRadius),
+  );
+
+  late final _expansionPanelThemeDataDark = ExpansionTileThemeData(
+    backgroundColor: _colorSchemeDark.surfaceContainerHighest,
+    collapsedBackgroundColor: _colorSchemeDark.surfaceContainerHighest,
+    shape: RoundedRectangleBorder(borderRadius: _border.borderRadius / 2),
+    collapsedShape: RoundedRectangleBorder(borderRadius: _border.borderRadius),
+  );
+
+  // Expansion Panel Theme Data End
+
+  // Slider Theme Data Start
+
+  late final _sliderThemeDataLight = SliderThemeData(
+    activeTrackColor: _colorSchemeLight.primary,
+    inactiveTrackColor: _colorSchemeLight.primaryFixedDim,
+  );
+
+  late final _sliderThemeDataDark = SliderThemeData(
+    activeTrackColor: _colorSchemeDark.primary,
+    inactiveTrackColor: _colorSchemeDark.primaryFixedDim,
+  );
+
+  // Slider Theme Data End
 
   late final ThemeData lightTheme = ThemeData.light().copyWith(
     scaffoldBackgroundColor: _colorSchemeLight.surface,
@@ -261,6 +259,9 @@ class AppTheme {
     // menuTheme: _menuThemeDataLight,
     dropdownMenuTheme: _dropdownMenuThemeDataLight,
     popupMenuTheme: _popupMenuThemeDataLight,
+    cardTheme: _cardThemeDataLight,
+    expansionTileTheme: _expansionPanelThemeDataLight,
+    sliderTheme: _sliderThemeDataLight,
   );
 
   late final ThemeData darkTheme = ThemeData.dark().copyWith(
@@ -276,5 +277,7 @@ class AppTheme {
     dropdownMenuTheme: _dropdownMenuThemeDataDark,
     popupMenuTheme: _popupMenuThemeDataDark,
     cardTheme: _cardThemeDataDark,
+    expansionTileTheme: _expansionPanelThemeDataDark,
+    sliderTheme: _sliderThemeDataDark,
   );
 }

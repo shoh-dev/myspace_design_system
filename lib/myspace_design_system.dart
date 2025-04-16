@@ -17,3 +17,4 @@ export 'src/ui/overlay/wrapper.dart';
 export 'src/utils/helpers/context.dart';
 export 'src/utils/helpers/theme.dart';
 export 'src/utils/helpers/state_mixin.dart';
+export 'src/utils/helpers/widget.dart';

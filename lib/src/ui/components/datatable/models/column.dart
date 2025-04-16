@@ -18,6 +18,7 @@ abstract class ColumnDef {
     return DataColumn(
       onSort: onSort,
       label: build(context),
+      columnWidth: const IntrinsicColumnWidth(flex: 4),
     );
   }
 

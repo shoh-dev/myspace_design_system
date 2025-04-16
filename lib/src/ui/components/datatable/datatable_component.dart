@@ -38,7 +38,12 @@ class DatatableComponent extends StatelessWidget {
       ),
       columns: [
         for (var column in columns) column.buildDataColumn(context),
-        if (onRowActionPressed != null) const DataColumn(label: Text("")),
+        if (onRowActionPressed != null)
+          const DataColumn(
+            label: Text("Action"),
+            headingRowAlignment: MainAxisAlignment.center,
+            columnWidth: IntrinsicColumnWidth(flex: 1),
+          ),
       ],
       rows: [
         for (var row in rows)
@@ -47,26 +52,25 @@ class DatatableComponent extends StatelessWidget {
               for (var cell in row.cells) cell.buildDataCell(context),
               if (onRowActionPressed != null)
                 DataCell(
-                  const SizedBox(),
-                  showEditIcon: !row.alwaysDisableEdit,
-                  onTapDown: row.alwaysDisableEdit
-                      ? null
-                      : (details) async {
-                          // final position =
-                          //     context.findRelativeRectPosition(details);
-
-                          // if (position == null) return;
-
-                          // final action = await showMenu<DropdownItem<String>>(
-                          //     context: context,
-                          //     position: position,
-                          //     items: [
-                          //       for (var action in rowActions)
-                          //         PopupMenuItem(
-                          //             value: action, child: Text(action.label))
-                          //     ]);
-                          // if (action != null) onRowActionPressed!(row, action);
-                        },
+                  row.alwaysDisableEdit
+                      ? const SizedBox.shrink()
+                      : Center(
+                          child: PopupMenuButton(
+                            offset: const Offset(0, 40),
+                            elevation: 10,
+                            onSelected: (action) {
+                              onRowActionPressed!(row, action);
+                            },
+                            icon: const Icon(Icons.more_vert),
+                            itemBuilder: (context) {
+                              return [
+                                for (var action in rowActions)
+                                  PopupMenuItem(
+                                      value: action, child: Text(action.label))
+                              ];
+                            },
+                          ),
+                        ),
                 ),
             ],
           ),

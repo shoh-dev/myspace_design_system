@@ -6,8 +6,10 @@ import 'package:myspace_design_system/myspace_design_system.dart';
 class HardCodedTextComponent extends TextComponent {
   final String text;
   final bool ignoreLog;
+  final TextStyle? style;
 
-  HardCodedTextComponent(this.text, {super.key, this.ignoreLog = false}) {
+  HardCodedTextComponent(this.text,
+      {super.key, this.ignoreLog = false, this.style}) {
     if (!ignoreLog) {
       try {
         final stackTrace = StackTrace.current;
@@ -23,6 +25,9 @@ class HardCodedTextComponent extends TextComponent {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text);
+    return Text(
+      text,
+      style: style,
+    );
   }
 }
