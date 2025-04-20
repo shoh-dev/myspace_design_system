@@ -21,25 +21,27 @@ class TextFieldComponent extends FormField<String> {
     TextEditingController? controller,
     List<Widget> Function(String query)? suffixWidgets,
     bool autoFocus = false,
+    TapRegionCallback? onTapOutside,
   }) : super(
-          builder: (field) {
-            return _Field(
-              controller: controller,
-              field: field,
-              onChanged: onChanged,
-              hintText: hintText,
-              label: label,
-              canClear: canClear,
-              enabled: enabled,
-              initialValue: initialValue,
-              validator: validator,
-              onSaved: onSaved,
-              maxLines: maxLines,
-              suffixWidgets: suffixWidgets,
-              autofocus: autoFocus,
-            );
-          },
-        );
+         builder: (field) {
+           return _Field(
+             controller: controller,
+             onTapOutside: onTapOutside,
+             field: field,
+             onChanged: onChanged,
+             hintText: hintText,
+             label: label,
+             canClear: canClear,
+             enabled: enabled,
+             initialValue: initialValue,
+             validator: validator,
+             onSaved: onSaved,
+             maxLines: maxLines,
+             suffixWidgets: suffixWidgets,
+             autofocus: autoFocus,
+           );
+         },
+       );
 
   @override
   FormFieldState<String> createState() => _FieldComponentState();
@@ -69,11 +71,13 @@ class _Field extends StatefulWidget {
     this.maxLines,
     this.controller,
     this.suffixWidgets,
+    this.onTapOutside,
     required this.autofocus,
   });
 
   final FormFieldState<String> field;
   final ValueChanged<String>? onChanged;
+  final TapRegionCallback? onTapOutside;
   final String? hintText;
   final String? label;
   final bool canClear;
@@ -130,60 +134,70 @@ class __FieldState extends State<_Field> {
         spacing: 4,
         children: [
           if (widget.label != null)
-            FormFieldLabel(
-              widget.label!,
-              hasError: field.hasError,
-            ),
+            FormFieldLabel(widget.label!, hasError: field.hasError),
           TextFormField(
             autofocus: widget.autofocus,
             controller: _controller,
             maxLines: widget.maxLines,
             validator: widget.validator,
             onChanged: widget.onChanged,
+            onTapOutside: widget.onTapOutside,
             decoration: InputDecoration(
               errorText: field.errorText,
               hintText: widget.hintText,
               // labelText: widget.label,
               // floatingLabelBehavior: FloatingLabelBehavior.auto,
               // labelStyle: context.textTheme.bodyLarge,
-              suffixIcon: !widget.enabled
-                  ? null
-                  : canShowResetButton
+              suffixIcon:
+                  !widget.enabled
+                      ? null
+                      :
+                      // : canShowResetButton
+                      // ? Transform.scale(
+                      //   scale: .8,
+                      //   alignment: Alignment.centerRight,
+                      //   child: Row(
+                      //     mainAxisSize: MainAxisSize.min,
+                      //     spacing: 8,
+                      //     children: [
+                      //       if (widget.suffixWidgets != null)
+                      //         for (var icon in widget.suffixWidgets!(
+                      //           _controller.text,
+                      //         ))
+                      //           icon,
+                      //       ButtonComponent.iconOutlined(
+                      //         icon: Icons.clear_rounded,
+                      //         onPressed: () => reset(field.context),
+                      //       ),
+                      //       const SizedBox(width: 1),
+                      //     ],
+                      //   ),
+                      // )
+                      // :
+                      widget.suffixWidgets != null
                       ? Transform.scale(
-                          scale: .8,
-                          alignment: Alignment.centerRight,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            spacing: 8,
-                            children: [
-                              if (widget.suffixWidgets != null)
-                                for (var icon
-                                    in widget.suffixWidgets!(_controller.text))
-                                  icon,
+                        scale: .8,
+                        alignment: Alignment.centerRight,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            for (var icon in widget.suffixWidgets!(
+                              _controller.text,
+                            ))
+                              icon,
+                            if (canShowResetButton)
                               ButtonComponent.iconOutlined(
                                 icon: Icons.clear_rounded,
-                                onPressed: () => reset(field.context),
+                                onPressed:
+                                    _controller.text.isEmpty
+                                        ? null
+                                        : () => reset(field.context),
                               ),
-                              const SizedBox(width: 1),
-                            ],
-                          ),
-                        )
-                      : widget.suffixWidgets != null
-                          ? Transform.scale(
-                              scale: .8,
-                              alignment: Alignment.centerRight,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                spacing: 8,
-                                children: [
-                                  for (var icon in widget
-                                      .suffixWidgets!(_controller.text))
-                                    icon,
-                                  const SizedBox(width: 1),
-                                ],
-                              ),
-                            )
-                          : null,
+                            const SizedBox(width: 6),
+                          ],
+                        ),
+                      )
+                      : null,
             ),
             enabled: widget.enabled,
           ),
