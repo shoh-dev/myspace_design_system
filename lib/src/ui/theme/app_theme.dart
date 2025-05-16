@@ -2,26 +2,30 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   final double? borderRadius;
-  final Color? seedDark;
-  final Color? surfaceDark;
-  final Color? scaffoldBackgroundColorDark;
+  // final Color? seedLight;
+  // final Color? seedDark;
+  // final Color? surfaceDark;
+  // final Color? surfaceLight;
+  final ColorScheme _colorSchemeLight;
+  final ColorScheme _colorSchemeDark;
 
   AppTheme({
     this.borderRadius,
-    this.surfaceDark,
-    this.seedDark,
-    this.scaffoldBackgroundColorDark,
-  });
+    ColorScheme? colorSchemeDark,
+    ColorScheme? colorSchemeLight,
+  }) : _colorSchemeDark = colorSchemeDark ?? const ColorScheme.dark(),
+       _colorSchemeLight = colorSchemeLight ?? const ColorScheme.light();
 
-  late final _colorSchemeLight = ColorScheme.fromSeed(
-    seedColor: Colors.blue,
-    brightness: Brightness.light,
-  );
-  late final _colorSchemeDark = ColorScheme.fromSeed(
-    seedColor: seedDark ?? Colors.blue,
-    brightness: Brightness.dark,
-    surface: surfaceDark,
-  );
+  // late final _colorSchemeLight = ColorScheme.fromSeed(
+  //   seedColor: seedLight ?? Colors.blue,
+  //   brightness: Brightness.light,
+  //   surface: surfaceLight,
+  // );
+  // late final _colorSchemeDark = ColorScheme.fromSeed(
+  //   seedColor: seedDark ?? Colors.blue,
+  //   brightness: Brightness.dark,
+  //   surface: surfaceDark,
+  // );
 
   final _textThemeLight = ThemeData.light().textTheme;
   final _textThemeDark = ThemeData.dark().textTheme;

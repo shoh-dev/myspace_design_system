@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myspace_design_system/myspace_design_system.dart';
-import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 
 import 'helper_widgets/form_field_error_text.dart';
@@ -18,20 +17,20 @@ class SliderComponent extends FormField<double> {
     this.min,
     this.divisions,
   }) : super(
-          builder: (field) {
-            field.didChange(initialValue);
-            return _Slider(
-              field: field,
-              min: min,
-              max: max,
-              label: label,
-              initialValue: initialValue,
-              onChanged: onChanged,
-              enabled: enabled,
-              divisions: divisions,
-            );
-          },
-        );
+         builder: (field) {
+           field.didChange(initialValue);
+           return _Slider(
+             field: field,
+             min: min,
+             max: max,
+             label: label,
+             initialValue: initialValue,
+             onChanged: onChanged,
+             enabled: enabled,
+             divisions: divisions,
+           );
+         },
+       );
 
   final ValueChanged<double?>? onChanged;
   final double? min;
@@ -94,8 +93,8 @@ class __SliderState extends State<_Slider> {
   Widget build(BuildContext context) {
     final hasError = field.hasError;
     final errorText = field.errorText;
-    final _min = widget.min ?? 0.0;
-    final _max = widget.max ?? 1.0;
+    final min = widget.min ?? 0.0;
+    final max = widget.max ?? 1.0;
     return LayoutComponent.column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -119,14 +118,15 @@ class __SliderState extends State<_Slider> {
                 child: Slider(
                   value: field.value ?? 0.0,
                   label: field.value?.toStringAsFixed(2),
-                  min: _min,
-                  max: _max,
-                  onChanged: widget.enabled
-                      ? (value) {
-                          field.didChange(value);
-                          widget.onChanged?.call(value);
-                        }
-                      : null,
+                  min: min,
+                  max: max,
+                  onChanged:
+                      widget.enabled
+                          ? (value) {
+                            field.didChange(value);
+                            widget.onChanged?.call(value);
+                          }
+                          : null,
                   thumbColor:
                       hasError ? Colors.red : field.context.colorScheme.primary,
                   activeColor: hasError ? Colors.red : null,

@@ -7,7 +7,8 @@ import 'types/text.dart';
 import 'types/destructive.dart';
 
 extension ButtonComponentHelper on ButtonComponent {
-  Widget expanded() => SizedBox(width: double.infinity, child: this);
+  Widget expanded([double? height]) =>
+      SizedBox(width: double.infinity, height: height, child: this);
 }
 
 abstract class ButtonComponent extends StatelessWidget {

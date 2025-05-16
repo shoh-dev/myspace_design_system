@@ -19,20 +19,20 @@ class DropdownComponent<T> extends FormField<DropdownItem<T>> {
     String? helperText,
     double? menuWidth,
   }) : super(
-          builder: (field) {
-            field.didChange(initialValue);
-            return _Menu<T>(
-              field: field,
-              onChanged: onChanged,
-              hintText: hintText,
-              label: label,
-              items: items,
-              initialValue: initialValue,
-              helperText: helperText,
-              menuWidth: menuWidth,
-            );
-          },
-        ) {
+         builder: (field) {
+           field.didChange(initialValue);
+           return _Menu<T>(
+             field: field,
+             onChanged: onChanged,
+             hintText: hintText,
+             label: label,
+             items: items,
+             initialValue: initialValue,
+             helperText: helperText,
+             menuWidth: menuWidth,
+           );
+         },
+       ) {
     assert(items.isNotEmpty);
     // //check if labels are not duplicated
     // final labels = items.map((e) => e.label);
@@ -83,8 +83,9 @@ class __MenuState<T> extends State<_Menu<T>> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.items
-          .any((element) => element.value == widget.initialValue?.value)) {
+      if (widget.items.any(
+        (element) => element.value == widget.initialValue?.value,
+      )) {
         field.didChange(widget.initialValue);
       }
     });
@@ -99,10 +100,7 @@ class __MenuState<T> extends State<_Menu<T>> {
         spacing: 4,
         children: [
           if (widget.label != null)
-            FormFieldLabel(
-              widget.label!,
-              hasError: field.hasError,
-            ),
+            FormFieldLabel(widget.label!, hasError: field.hasError),
           DropdownButtonFormField<DropdownItem<T>>(
             isExpanded: true,
             items: [
@@ -112,12 +110,12 @@ class __MenuState<T> extends State<_Menu<T>> {
                   enabled: item.enabled,
                   child: LayoutComponent.row(
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if (item.icon != null)
-                        Icon(
-                          item.icon,
-                          size: 18,
-                        ),
+                      if (item.icon != null) ...[
+                        Icon(item.icon, size: 18),
+                        const SizedBox(width: 4),
+                      ],
                       Expanded(child: Text(item.label)),
                       if (item.value == field.value?.value)
                         const Icon(Icons.check),
@@ -125,15 +123,15 @@ class __MenuState<T> extends State<_Menu<T>> {
                   ),
                 ),
             ],
-            value: widget.items.any(
-                    (element) => element.value == widget.initialValue?.value)
-                ? field.value
-                : null,
+            value:
+                widget.items.any(
+                      (element) => element.value == widget.initialValue?.value,
+                    )
+                    ? field.value
+                    : null,
             hint: widget.hintText != null ? Text(widget.hintText!) : null,
             selectedItemBuilder: (context) {
-              return [
-                for (final item in widget.items) Text(item.label),
-              ];
+              return [for (final item in widget.items) Text(item.label)];
             },
             decoration: InputDecoration(
               helperText: widget.helperText,

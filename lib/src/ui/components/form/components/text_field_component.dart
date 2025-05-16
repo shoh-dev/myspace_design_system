@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:myspace_design_system/myspace_design_system.dart';
-import 'package:myspace_design_system/src/ui/components/form/components/helper_widgets/form_field_label.dart';
 import 'package:myspace_design_system/src/ui/components/shared/disabled_component.dart';
 
 class TextFieldComponent extends FormField<String> {
